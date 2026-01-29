@@ -1,0 +1,901 @@
+Found 300 results across pages 1-3 for 'Data Science':
+
+1. Title: Data science from scratch
+   Author(s): Joel Grus
+
+2. Title: Data Science
+   Author(s): Tiffany-Anne Timbers, Trevor Campbell, Melissa Lee
+
+3. Title: Data Science for Business
+   Author(s): Foster Provost, Tom Fawcett
+
+4. Title: Ace the Data Science Interview
+   Author(s): Nick Singh, Kevin Huo
+
+5. Title: Python Data Science Handbook
+   Author(s): Jake VanderPlas
+
+6. Title: NASA/DoD aerospace knowledge diffusion research project
+   Author(s): Thomas E. Pinelli
+
+7. Title: Ender's Game
+   Author(s): Orson Scott Card
+
+8. Title: Essays
+   Author(s): Francis Bacon
+
+9. Title: Pride and Prejudice
+   Author(s): Jane Austen
+
+10. Title: Bible
+   Author(s): Bible
+
+11. Title: Le Deuxième Sexe
+   Author(s): Simone de Beauvoir
+
+12. Title: Financial Management
+   Author(s): United States. General Accounting Office
+
+13. Title: Data science for dummies
+   Author(s): Lillian Pierson
+
+14. Title: Financial audit
+   Author(s): United States. General Accounting Office
+
+15. Title: Accounting Principles
+   Author(s): Jerry J. Weygandt
+
+16. Title: Data Science
+   Author(s): Ebonie Slough
+
+17. Title: Doing Data Science
+   Author(s): Rachel Schutt, Cathy O'Neil
+
+18. Title: Advances in Computers, Volume 49 (Advances in Computers)
+   Author(s): Marvin V. Zelkowitz, Marshall C. Yovits
+
+19. Title: Thinking Data Science
+   Author(s): Poornachandra Sarang
+
+20. Title: Freakonomics
+   Author(s): Steven D. Levitt, Stephen J. Dubner, Andrea Montero Cusset
+
+21. Title: Computer science
+   Author(s): J. Glenn Brookshear, Brookshear
+
+22. Title: Houghton Mifflin Science
+   Author(s): Houghton Mifflin Company Staff
+
+23. Title: Spatial Data Science
+   Author(s): Wilson, John P.
+
+24. Title: Secure Data Science
+   Author(s): Bhavani Thuraisingham, Murat Kantarcioglu, Latifur Khan
+
+25. Title: Data Science
+   Author(s): Carlos Alberto de Bragança Pereira, Polpo Adriano
+
+26. Title: Big Data
+   Author(s): Mouad Radi
+
+27. Title: Confident Data Science
+   Author(s): Adam Ross Nelson
+
+28. Title: Data Science
+   Author(s): Pallavi Vijay Chavan, Parikshit N. Mahalle, Ramchandra Mangrulkar, Idongesit Williams
+
+29. Title: Data Science
+   Author(s): Nicholas Brown
+
+30. Title: DATA SCIENCE
+   Author(s): ANALYTICS GOLD
+
+31. Title: Data Science
+   Author(s): Qurban A. Memon, Shakeel Ahmed Khoja
+
+32. Title: Physics for scientists and engineers
+   Author(s): Paul A. Tipler, Gene Mosca
+
+33. Title: There Are Two Types of People in the World Those Who Can Extrapolate from Incomplete Data
+   Author(s): Data Science Co
+
+34. Title: Business Intelligence, Analytics, and Data Science
+   Author(s): Ramesh Sharda, Dursun Delen, Efraim Turban
+
+35. Title: Data Science
+   Author(s): Vijay Kotu, Bala Deshpande
+
+36. Title: Data Science
+   Author(s): John D. Kelleher, Brendan Tierney
+
+37. Title: Data Science
+   Author(s): C. Raju
+
+38. Title: Master in Data Science : a Practical Understanding of Data Science
+   Author(s): Ivan Vacek
+
+39. Title: Data Science Handbook
+   Author(s): Field Cady
+
+40. Title: Cracking the Data Science Interview
+   Author(s): Maverick Lin
+
+41. Title: Data science
+   Author(s): John D. Kelleher, Brendan Tierney
+
+42. Title: Data Science
+   Author(s): C. R. Rao, Arni S. R. Srinivasa Rao
+
+43. Title: Data Science and Big Data Analytics
+   Author(s): EMC Education Services
+
+44. Title: Data Science
+   Author(s): Monika Freunek Muller
+
+45. Title: Data Science
+   Author(s): Robert Stahlbock, Gary M. Weiss, Mahmoud Abou-Nasr
+
+46. Title: Data Science
+   Author(s): George Duckett
+
+47. Title: Data Science
+   Author(s): H. Bhasin
+
+48. Title: Cryptonomicon
+   Author(s): Neal Stephenson
+
+49. Title: Data Science
+   Author(s): Gyanendra K. Verma, Badal Soni, Salah Bourennane, Alexandre C. B. Ramos
+
+50. Title: Data Science
+   Author(s): Zacharias Voulgaris
+
+51. Title: Javascript for Data Science
+   Author(s): Maya Gans, Toby Hodges, Greg Wilson
+
+52. Title: Practical Data Science With R
+   Author(s): John Mount
+
+53. Title: Python for Data Science
+   Author(s): Alex Campbell
+
+54. Title: Data Science
+   Author(s): Benjamin M. Abdel-Karim
+
+55. Title: Data Science : the Complete Guide to Data Science for Beginners
+   Author(s): Sabra Deal
+
+56. Title: Data Science
+   Author(s): Ras
+
+57. Title: Data Science
+   Author(s): Michael Oettinger
+
+58. Title: Data Science
+   Author(s): I. G. I. Global
+
+59. Title: Data Science
+   Author(s): Tammy Barnes
+
+60. Title: Data Science
+   Author(s): Mahdi Bohlouli, Bahram Sadeghi Bigham, Zahra Narimani, Mahdi Vasighi, Ebrahim Ansari
+
+61. Title: Data Science Solutions
+   Author(s): Manav Sehgal
+
+62. Title: DIY Data Science
+   Author(s): Jonathan Dinu
+
+63. Title: Data Science
+   Author(s): Timothy Cooper
+
+64. Title: Data Science : the Complete Guide to Data Science for Beginners
+   Author(s): Wendi Yanofsky
+
+65. Title: Getting started with data science
+   Author(s): Murtaza Haider
+
+66. Title: Statistical learning and data science
+   Author(s): Mireille Gettler Summa
+
+67. Title: Congo
+   Author(s): Michael Crichton
+
+68. Title: Python for Data Science
+   Author(s): Edward Young
+
+69. Title: Data Science Handbook : a Gentle Introduction to Data Science and Its Algorithms
+   Author(s): Fritz Kostelnik
+
+70. Title: Data Science Foundations
+   Author(s): Stephen Mariadas, Ian Huke
+
+71. Title: Mobility Data Science
+   Author(s): Mahmoud Sakr, Alejandro Vaisman, Esteban Zimányi
+
+72. Title: Basketball Data Science
+   Author(s): Paola Zuccolotto, Marica Manisera
+
+73. Title: Data Science
+   Author(s): Liam Damien
+
+74. Title: Data Science Applications Accross the Industries
+   Author(s): Goran Dragosavac
+
+75. Title: Data Science Handbook
+   Author(s): Krystina Lembrick
+
+76. Title: Data Science
+   Author(s): Gintautas Dzemyda, Jolita Bernatavičienė, Janusz Kacprzyk
+
+77. Title: Building data science teams
+   Author(s): D. J. Patil
+
+78. Title: Introduction to Data Science
+   Author(s): Rafael A. Irizarry
+
+79. Title: Data Science for Beginners : Grasp the Essence of Data Science and Machine Learning
+   Author(s): Lesley Shambaugh
+
+80. Title: World of Data Science : Different Perspectives on Data Science from Famous Data Scientists
+   Author(s): Saul Newbury
+
+81. Title: Storytelling with Data
+   Author(s): Cole Nussbaumer Knaflic
+
+82. Title: Data Science and Data Analytics
+   Author(s): Amit Kumar Tyagi
+
+83. Title: Data Engineering and Data Science
+   Author(s): Aynur Unal, Kukatlapalli Pradeep Kumar, Vinay Jha Pillai, Hari Murthy, M. Niranjanamurthy
+
+84. Title: Intro to Python for Computer Science and Data Science
+   Author(s): Paul J. Deitel, Harvey M. Deitel
+
+85. Title: Agile Data Science
+   Author(s): Russell Jurney
+
+86. Title: Data Science
+   Author(s): Detlev Frick
+
+87. Title: Manipulating Data Science
+   Author(s): Mandeep Singh Sheoran, Rishabh Shukla, Sumit Kumar Shukla
+
+88. Title: Data Science
+   Author(s): Henry Gersh
+
+89. Title: Angewandte Data Science
+   Author(s): Lothar B. Blum
+
+90. Title: Analytics
+   Author(s): Daniel Covington
+
+91. Title: Data Science Handbook
+   Author(s): Kolla Bhanu Prakash
+
+92. Title: Applied Data Science
+   Author(s): Douglas G. Woolford, Donna Kotsopoulos, Boba Samuels
+
+93. Title: Data Science
+   Author(s): Francesco Palumbo, Angela Montanari, Maurizio Vichi
+
+94. Title: Python for Data Science for Dummies
+   Author(s): John Paul Mueller, Luca Massaron
+
+95. Title: Essential Math for Data Science
+   Author(s): Thomas Nield
+
+96. Title: Data Science : The Hard Parts
+   Author(s): Daniel Vaughan
+
+97. Title: Computer Science
+   Author(s): Carl French, C. S. French
+
+98. Title: Responsible Data Science
+   Author(s): Peter C. Bruce, Grant Fleming
+
+99. Title: Python Data Science
+   Author(s): Chaolemen Borjigin
+
+100. Title: Data Science Tools
+   Author(s): Christopher Greco
+
+101. Title: Spatial Data Science
+   Author(s): Edzer Pebesma, Roger Bivand
+
+102. Title: Data Science for Neuroimaging
+   Author(s): Ariel Rokem, Tal Yarkoni
+
+103. Title: Data Science for Beginners
+   Author(s): Alex Campbell
+
+104. Title: ההיסטוריה של המחר
+   Author(s): Yuval Noah Harari
+
+105. Title: Fundamentals of Data Science
+   Author(s): Sanjeev J. Wagh, Manisha S. Bhende, Anuradha D. Thakare
+
+106. Title: Statistics for Data Science
+   Author(s): James D. Miller
+
+107. Title: Foundations of Data Science
+   Author(s): Avrim Blum, John Hopcroft, Ravindran Kannan
+
+108. Title: The Data Science Handbook
+   Author(s): Carl Shan, William Chen, Henry Wang, Max Song
+
+109. Title: Statistical Data Science
+   Author(s): Niall M. Adams, Ed Cohen
+
+110. Title: Game Data Science
+   Author(s): Magy Seif El-Nasr, Alessandro Canossa, Truong-Huy D. Nguyen, Anders Drachen
+
+111. Title: Human-Centered Data Science
+   Author(s): Cecilia Aragon, Shion Guha, Marina Kogan, Michael Muller, Gina Neff
+
+112. Title: Citizen Data Science
+   Author(s): Gerardus Blokdyk
+
+113. Title: Data Science Bookcamp
+   Author(s): Leonard Apeltsin
+
+114. Title: Data Science From Scratch
+   Author(s): Henry George
+
+115. Title: Data Science with Python
+   Author(s): Rahul Mula
+
+116. Title: Data Science for Undergraduates
+   Author(s): National Academies of Sciences, Engineering, and Medicine, Division of Behavioral and Social Sciences and Education, Board on Science Education, Division on Engineering and Physical Sciences, Committee on Applied and Theoretical Statistics
+
+117. Title: Python Data Science
+   Author(s): James Bolt
+
+118. Title: Python for Data Science
+   Author(s): Yuli Vasiliev
+
+119. Title: Data Science
+   Author(s): William Vance
+
+120. Title: Executive Data Science
+   Author(s): Roger Peng
+
+121. Title: Data Science Gym
+   Author(s): Syed Hassan Amin
+
+122. Title: Visualizing Data Science
+   Author(s): Johnn Taylor
+
+123. Title: Doing Data Science
+   Author(s): Sarah Kanaan
+
+124. Title: Data Science Certification
+   Author(s): Ritika Singh
+
+125. Title: Financial Data Science
+   Author(s): Giuseppe Calafiore, Laurent El Ghaoui, Giulia Fracastoro, Alicia Tsai
+
+126. Title: Probability and Statistics for Data Science
+   Author(s): Norman Matloff
+
+127. Title: Data Science Anwenden
+   Author(s): Thomas Barton, Christian Müller
+
+128. Title: Apply Data Science
+   Author(s): Thomas Barton, Christian Müller
+
+129. Title: IBM Data Science Experience
+   Author(s): Gerard Blokdyk
+
+130. Title: Introduction to Data Science
+   Author(s): Peters Morgan
+
+131. Title: Data Science in der Praxis
+   Author(s): Tom Alby
+
+132. Title: Python for Data Science
+   Author(s): Computer Science Academy
+
+133. Title: Data Science in Layman's Terms
+   Author(s): Nicholas Lincoln, pro_ebookcovers
+
+134. Title: Data Science Job
+   Author(s): Przemek Chojecki
+
+135. Title: Situating Data Science
+   Author(s): Michelle Hoda Wilkerson, Joseph L. Polman
+
+136. Title: Fundamentals of Data Science
+   Author(s): Jugal K. Kalita, Dhruba K. Bhattacharrya, Swarup Roy
+
+137. Title: Data Science Ethics
+   Author(s): David Martens
+
+138. Title: Data Smart
+   Author(s): John W. Foreman
+
+139. Title: Data Structures and Algorithms Made Easy
+   Author(s): Narasimha Karumanchi
+
+140. Title: Data Science For Dummies
+   Author(s): Carl Anderson
+
+141. Title: R for Data Science
+   Author(s): Hadley Wickham, Garrett Grolemund
+
+142. Title: Data Science
+   Author(s): Matthias Plaue
+
+143. Title: Managing Data Science
+   Author(s): Kirill Dubovikov
+
+144. Title: Applied Data Science
+   Author(s): Joanne Rodrigues-Craig
+
+145. Title: Advances in Data Science
+   Author(s): Edwin Diday, Rong Guan, Gilbert Saporta, Huiwen Wang
+
+146. Title: Analytics, Data Science, & Artificial Intelligence
+   Author(s): Ramesh Sharda, Dursun Delen, Efraim Turban
+
+147. Title: Data Science
+   Author(s): Ivo D. Dinov, Milen Velchev Velev
+
+148. Title: Actuarial Data Science
+   Author(s): Martin Seehafer, Stefan Nörtemann, Jonas Offtermatt, Fabian Transchel, Wiltrud Weidner
+
+149. Title: Data Science in Context
+   Author(s): Alfred Z. Spector, Peter Norvig, Chris Wiggins, Jeannette M. Wing
+
+150. Title: Data Science Landscape
+   Author(s): Usha Mujoo Munshi, Neeta Verma
+
+151. Title: Data Science with Julia
+   Author(s): Paul D. McNicholas, Peter Tait
+
+152. Title: Data Science and Analytics
+   Author(s): Sneha Kumari, K. K. Tripathy, Vidya Kumbhar
+
+153. Title: Frontiers in Data Science
+   Author(s): Matthias Dehmer, Frank Emmert-Streib
+
+154. Title: Essentials of Data Science
+   Author(s): Graham J. Williams
+
+155. Title: Data Science and Security
+   Author(s): Dharm Singh Jat, Samiksha Shukla, Aynur Unal, Durgesh Kumar Mishra
+
+156. Title: Master in Data Science : a Practical Understanding of Data Science
+   Author(s): Merna Laperouse
+
+157. Title: Data Science with Semantic Technologies
+   Author(s): Archana Patel, Narayan C. Debnath, Bharat Bhushan
+
+158. Title: Python Data Science
+   Author(s): Programming Languages Programming Languages Project
+
+159. Title: Data Science and Big Data Analytics
+   Author(s): Durgesh Kumar Mishra, Xin-She Yang, Aynur Unal
+
+160. Title: Schaum's outline of theory and problems of data structures
+   Author(s): Seymour Lipschutz
+
+161. Title: Smarter Data Science
+   Author(s): Neal Fishman, Cole Stryker, Grady Booch
+
+162. Title: Data Science with Jupyter
+   Author(s): Prateek Gupta
+
+163. Title: Data Science and Big Data Computing
+   Author(s): Zaigham Mahmood
+
+164. Title: Big Data, Cloud Computing, Data Science & Engineering
+   Author(s): Roger Lee
+
+165. Title: Advances in Data Science
+   Author(s): Gloria Phillips-Wren, Anna Esposito, Lakhmi C. Jain
+
+166. Title: Ethical Data Science
+   Author(s): Anne L. Washington
+
+167. Title: Responsible Data Science
+   Author(s): Jimson Mathew, Santhosh Kumar G, Deepak P, Joemon Jose
+
+168. Title: Python for Data Science
+   Author(s): Ethan Williams
+
+169. Title: Superlative 2023 Data Science for Beginners
+   Author(s): Maya Clinton
+
+170. Title: Data Science from Scratch
+   Author(s): Unknown author
+
+171. Title: Data Science for Mathematicians
+   Author(s): Nathan Carter
+
+172. Title: Algorithms for Data Science
+   Author(s): Brian Steele, John Chandler, Swarna Reddy
+
+173. Title: Data Science for Engineers
+   Author(s): Raghunathan Rengaswamy, Resmi Suresh
+
+174. Title: Modern Data Science with R
+   Author(s): Benjamin S. Baumer, Daniel T. Kaplan, Nicholas J. Horton
+
+175. Title: Start Your Career in Data Science : the Secrets Behind the World of Data Science
+   Author(s): Lucio Shigeta
+
+176. Title: Data Science with Python
+   Author(s): Craig Berg
+
+177. Title: Python Data Science
+   Author(s): Andrew Park
+
+178. Title: Applied Data Science
+   Author(s): Martin Braschler, Thilo Stadelmann, Kurt Stockinger
+
+179. Title: Data Science Building Blocks
+   Author(s): Malaya Rout, Radhakrishnan Guhan, Jyothsna Sravanthi
+
+180. Title: Data Science for Beginners
+   Author(s): Visalatchi L
+
+181. Title: Applying Data Science
+   Author(s): Gerhard Svolba Ph.D.
+
+182. Title: Data Science in Python
+   Author(s): Florian Dedov
+
+183. Title: Mastering Data Science
+   Author(s): William Smith
+
+184. Title: Data Science for Healthcare
+   Author(s): Sergio Consoli, Diego Reforgiato Recupero, Milan Petković
+
+185. Title: Art of Data Science
+   Author(s): Douglas Gray
+
+186. Title: Python Data Science
+   Author(s): Christopher Wilkinson
+
+187. Title: Python for Data Science
+   Author(s): Daniel OReilly
+
+188. Title: Data Science for Librarians
+   Author(s): Yunfei Du, Hammad Rauf Khan
+
+189. Title: Big Data and Data Science Engineering
+   Author(s): Roger Lee
+
+190. Title: Data Science for Businesses
+   Author(s): Smart WEBB
+
+191. Title: R for Political Data Science
+   Author(s): Francisco Urdinez, Andrés Cruz
+
+192. Title: DATA SCIENCE for BEGINNERS : Introduction to Data Science
+   Author(s): Prof John Smith
+
+193. Title: Streamlit for Data Science
+   Author(s): Tyler Richards
+
+194. Title:  Fundamentals of Data Structures in C++ 2nd Edition
+   Author(s): Ellis Horowitz, Sartaj Sahni, Dinesh Mehta
+
+195. Title: Data Science
+   Author(s): Tech World
+
+196. Title: Data Science Demystified
+   Author(s): Gautam Banerjee, Mainak Sen, Krishnendu Maji
+
+197. Title: Hacking for Dummies
+   Author(s): Kevin Beaver, Jutta Schmidt
+
+198. Title: Regression Models for Data Science in R
+   Author(s): Yassine MOUSAIF
+
+199. Title: Breaking into Data Science
+   Author(s): Grace Tang
+
+200. Title: Python Data Science
+   Author(s): Robert Hack
+
+201. Title: Data Science Für Dummies
+   Author(s): Lillian Pierson
+
+202. Title: Data Science for Genomics
+   Author(s): Ajith Abraham, Amit Kumar Tyagi
+
+203. Title: Data Science in Practice
+   Author(s): Tom Alby
+
+204. Title: ICT and Data Sciences
+   Author(s): Archana Singh, Vinod Kumar Shukla, Ashish Seth, Sai Sabitha
+
+205. Title: Foundations of Data Science
+   Author(s): A.L. BLUM
+
+206. Title: Python Data Science Cookbook
+   Author(s): Gopi Subramanian
+
+207. Title: Principles of Data Science
+   Author(s): Hamid R. Arabnia, Kevin Daimi, Robert Stahlbock, Cristina Soviany, Leonard Heilig, Kai Brüssau
+
+208. Title: Python for Data Science
+   Author(s): Muddana A. Lakshmi Lakshmi, Sandhya Vinayakam
+
+209. Title: PYTHON FOR DATA SCIENCE
+   Author(s): Mr Ethan Williams
+
+210. Title: Data Science - Analytics and Applications
+   Author(s): Peter Haber, Thomas Lampoltshammer, Manfred Mayr, Kathrin Plankensteiner
+
+211. Title: Data science foundations
+   Author(s): Fionn Murtagh
+
+212. Title: Data Science and Machine Learning
+   Author(s): Michele di Nuzzo
+
+213. Title: Data Science at the Command Line
+   Author(s): Jeroen Janssens
+
+214. Title: Data Science and Big Data
+   Author(s): Witold Pedrycz, Shyi-Ming Chen
+
+215. Title: Numsense! Data Science for the Layman
+   Author(s): Annalyn Ng, Kenneth Soo
+
+216. Title: Advances in Data Science
+   Author(s): Ilke Demir, Yifei Lou, Xu Wang, Kathrin Welker
+
+217. Title: R Para Data Science
+   Author(s): Hadley Wickham
+
+218. Title: Data Science for Babies
+   Author(s): Tim Cogan
+
+219. Title: Data Science Design Manual
+   Author(s): Steven Skiena
+
+220. Title: R for Data Science
+   Author(s): Dan Toomey
+
+221. Title: Python for Data Science
+   Author(s): Raj Kori, Abhi Sharma
+
+222. Title: Julia for Data Science
+   Author(s): Anshul Joshi
+
+223. Title: Clojure for Data Science
+   Author(s): Henry Garner
+
+224. Title: Data Science in Practice
+   Author(s): Alan Said, Vicenç Torra
+
+225. Title: Principles of Data Science
+   Author(s): Wisam Bukaita, Aeron Zentner
+
+226. Title: Cybersecurity Data Science
+   Author(s): Scott Mongeau, Andrzej Hajdasinski
+
+227. Title: Data Science and SDGs
+   Author(s): Bikas Kumar Sinha, Nurul Haque Mollah
+
+228. Title: Essentials of Data Science
+   Author(s): Max Anderson
+
+229. Title: Data Science and Communication
+   Author(s): João Manuel R. S. Tavares, Joel J. P. C. Rodrigues, Debajyoti Misra, Debasmriti Bhattacherjee
+
+230. Title: Big Data Science & Analytics
+   Author(s): Arshdeep Bahga
+
+231. Title: Your First Year In Data Science
+   Author(s): Dennis Salguero
+
+232. Title: Learn about Data Science : the Complete Beginner's Guide
+   Author(s): Emmitt Kusko
+
+233. Title: Data Science for Beginners : Grasp the Essence of Data Science and Machine Learning
+   Author(s): Letha Serratore
+
+234. Title: DATA SCIENCE FOR BUSINESS [Paperback]
+   Author(s): Unknown author
+
+235. Title: Machine Learning and Data Science
+   Author(s): Charu Gupta, Anand Sharma, Vishu Nadaan, Prateek Agrawal, Nisheeth Joshi
+
+236. Title: Data Science and Applications
+   Author(s): Satyasai Jagannath Nanda, Rajendra Prasad Yadav, Amir H. Gandomi, Mukesh Saraswat
+
+237. Title: Probability and Statistics for Data Science
+   Author(s): Norman S. Matloff
+
+238. Title: Learning Data Science
+   Author(s): Sam Lau, Joseph Gonzalez, Deborah Nolan
+
+239. Title: Data Science and Big Data Computing
+   Author(s): Zaigham Mahmood
+
+240. Title: Fundamentals of Data Science
+   Author(s): Sanjeev Wagh, Manisha Bhende, Anuradha Thakare
+
+241. Title: Data Science and Classification
+   Author(s): Vladimir Batagelj, Hans Hermann Bock, Anuska Ferligoj, Ales Žiberna
+
+242. Title: Dogs and Data Science
+   Author(s): Emily Thatcher, Camille Denning
+
+243. Title: R for Data Science
+   Author(s): Tammy Houston
+
+244. Title: Data Science in Applications
+   Author(s): Gintautas Dzemyda, Jolita Bernatavi&#269;ien&#279;, Janusz Kacprzyk
+
+245. Title: Fundamentals of Data Science
+   Author(s): Monika G, Deepa D, Pandi Murugan
+
+246. Title: Introduction to Data Science
+   Author(s): Gaoyan Ou, Zhanxing Zhu, Bin Dong, Weinan E
+
+247. Title: Data Science for Biology
+   Author(s): Emily Ren, Tony Lee
+
+248. Title: Data Science for Mathematicians
+   Author(s): Nathan C. Carter
+
+249. Title: Elements of Data Science
+   Author(s): Allen B. Downey
+
+250. Title: Python for Data Science
+   Author(s): Tony F. Charles
+
+251. Title: Data Science for Immunologists
+   Author(s): Niclas Thomas, Laura Pallett
+
+252. Title: Julia for Data Science
+   Author(s): Zacharias Voulgaris
+
+253. Title: ICT and Data Sciences
+   Author(s): Unknown author
+
+254. Title: DATA SCIENCE with PYTHON
+   Author(s): Ajit SINGH, Ajit Singh
+
+255. Title: Introduction to Data Science
+   Author(s): Jeffrey S. Saltz, Jeffrey M. (Morgan) Stanton
+
+256. Title: Spanish Data Science Fundamentals
+   Author(s): Isaca
+
+257. Title: Scala for Data Science
+   Author(s): Pascal Bugnion
+
+258. Title: Data Science for DUMMIES
+   Author(s): William Jayden
+
+259. Title: DevOps for Data Science
+   Author(s): Alex K. Gold
+
+260. Title: DATA SCIENCE with PYTHON
+   Author(s): J. Smith
+
+261. Title: Jupyter for Data Science
+   Author(s): Dan Toomey
+
+262. Title: Practical Data Science Cookbook
+   Author(s): Tony Ojeda, Sean Patrick Murphy, Benjamin Bengfort, Abhijit Dasgupta
+
+263. Title: Data Science by Andy
+   Author(s): Andrew Flagg
+
+264. Title: Essentials of Data Science
+   Author(s): George Glover
+
+265. Title: Python for Data Science
+   Author(s): Kevin Clark
+
+266. Title: Spark for Data Science
+   Author(s): Srinivas Duvvuri, Bikramaditya Singhal
+
+267. Title: Data Science Design Patterns
+   Author(s): Todd Morley
+
+268. Title: Research in Data Science
+   Author(s): Ellen Gasparovic, Carlotta Domeniconi
+
+269. Title: Java Data Science Cookbook
+   Author(s): Rushdi Shams
+
+270. Title: Java for Data Science
+   Author(s): Richard M. Reese, Jennifer L. Reese
+
+271. Title: Data Science for All
+   Author(s): Brennan Davis, Hunter Glanz
+
+272. Title: Art of Data Science
+   Author(s): Roger Peng, Elizabeth Matsui
+
+273. Title: Data Science in Geography
+   Author(s): Auden Leach
+
+274. Title: Methods for Data Science
+   Author(s): James Godfrey
+
+275. Title: Data Science Jobs
+   Author(s): Ann Rajaram
+
+276. Title: Data Science for Decision Makers
+   Author(s): Jon Howells
+
+277. Title: Self Learning of Data Science for Free
+   Author(s): Ajit Roy
+
+278. Title: An Introduction to Data Science
+   Author(s): Jeffrey S. Saltz, Jeffrey M. Stanton
+
+279. Title: Statistics for Data Science
+   Author(s): Deborah Oliver
+
+280. Title: Fuzzy Computing in Data Science
+   Author(s): Sachi Nandan Mohanty, Prasenjit Chatterjee, Bui Thanh Hung
+
+281. Title: Big Data Science in Finance
+   Author(s): Irene Aldridge, M. Avellaneda
+
+282. Title: Data Science – Analytics and Applications
+   Author(s): Peter Haber, Thomas Lampoltshammer, Manfred Mayr
+
+283. Title: Introducing Data Science
+   Author(s): Davy Cielen, Arno Meysman
+
+284. Title: R for Data Science
+   Author(s): Hadley Wickham, Garrett Grolemund
+
+285. Title: Data Science for Fundraising
+   Author(s): Ashutosh R Nandeshwar, Rodger Devine
+
+286. Title: Data Science with Matlab
+   Author(s): E. Valderrey
+
+287. Title: Data Science and Machine Learning
+   Author(s): Michele Di Nuzzo
+
+288. Title: Data Science and Analytics with Python
+   Author(s): Jesus Rogel-Salazar
+
+289. Title: Effective Data Science Infrastructure
+   Author(s): Ville Tuulos
+
+290. Title: Data Science for Wind Energy
+   Author(s): Yu Ding
+
+291. Title: Statistical Foundation of Data Science
+   Author(s): Jianqing Fan, Runze Li, Cun-Hui Zhang, Hui Zou
+
+292. Title: R for Health Data Science
+   Author(s): Ewen Harrison, Riinu Pius
+
+293. Title: Tour of Data Science
+   Author(s): Nailong Zhang
+
+294. Title: Python for Data Science
+   Author(s): Zed Fast
+
+295. Title: Quantitative Methods for Data Science
+   Author(s): James Godfrey
+
+296. Title: Neural Data Science
+   Author(s): Pascal Wallisch, Erik Lee Nylen
+
+297. Title: Data Science for Fake News
+   Author(s): Deepak P, Tanmoy Chakraborty, Cheng Long, Santhosh Kumar G
+
+298. Title: Game Theory for Data Science
+   Author(s): Boi Faltings, Goran Radanovic, Ronald Brachman, Peter Stone
+
+299. Title: Data Science par la pratique
+   Author(s): Joel Grus
+
+300. Title: Python Data Science
+   Author(s): Travis Booth

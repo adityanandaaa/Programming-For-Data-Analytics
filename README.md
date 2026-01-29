@@ -37,10 +37,46 @@ Programming_for_Data_Analytics/
 ├── notebooks/            # Jupyter notebooks
 ├── reports/              # Generated reports and visualizations
 ├── tests/                # Unit tests
+├── Week 3 Seminar/       # Week 3 seminar exercises
 ├── requirements.txt      # Project dependencies
 ├── main.py              # Main entry point
 └── README.md            # This file
 ```
+
+## 📖 Week 3 Seminar
+
+The **Week 3 Seminar** folder contains exercises focused on **API integration and data retrieval**.
+
+### Exercise: Open Library API Data Retrieval
+
+**File**: `Week 3 Seminar/exercise_week_3_seminar.py`
+
+This exercise demonstrates how to:
+- Make HTTP requests to the Open Library API (`https://openlibrary.org/search.json`)
+- Use API parameters for searching and pagination:
+  - `q`: Search query (keyword or title)
+  - `fields`: Specify which fields to retrieve (title, author_name, etc.)
+  - `page`: Pagination parameter to fetch multiple pages of results
+- Parse JSON responses
+- Process and format retrieved data
+- Write results to a text file
+
+**Example Usage**:
+```bash
+cd "Week 3 Seminar"
+python exercise_week_3_seminar.py
+```
+
+**Output**: 
+- Console display of 300 results (pages 1-3) for "Data Science" books
+- Saves formatted results to `data_science_results.txt`
+
+**Key Learnings**:
+- RESTful API concepts and HTTP requests
+- URL encoding and parameter management
+- JSON parsing with Python
+- Pagination for large result sets
+- File I/O operations
 
 ## ✨ Features
 
