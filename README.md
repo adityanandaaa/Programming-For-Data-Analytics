@@ -45,21 +45,21 @@ Programming_for_Data_Analytics/
 
 ## 📖 Week 3 Seminar
 
-The **Week 3 Seminar** folder contains exercises focused on **API integration and data retrieval**.
+The **Week 3 Seminar** folder contains exercises focused on **API integration and web scraping** with two different approaches.
 
-### Exercise: Open Library API Data Retrieval
+### Exercise 1: Open Library JSON API
 
 **File**: `Week 3 Seminar/exercise_week_3_seminar.py`
 
 This exercise demonstrates how to:
-- Make HTTP requests to the Open Library API (`https://openlibrary.org/search.json`)
+- Make HTTP requests to the Open Library JSON API (`https://openlibrary.org/search.json`)
 - Use API parameters for searching and pagination:
   - `q`: Search query (keyword or title)
   - `fields`: Specify which fields to retrieve (title, author_name, etc.)
   - `page`: Pagination parameter to fetch multiple pages of results
-- Parse JSON responses
+- Parse JSON responses programmatically
 - Process and format retrieved data
-- Write results to a text file
+- Write results to a text file with page separators
 
 **Example Usage**:
 ```bash
@@ -68,15 +68,53 @@ python exercise_week_3_seminar.py
 ```
 
 **Output**: 
-- Console display of 300 results (pages 1-3) for "Data Science" books
-- Saves formatted results to `data_science_results.txt`
+- Console display of 300 results (100 per page × 3 pages) for "Data Science" books
+- Saves formatted results to `data_science_results.txt` with clear page markers
+
+### Exercise 2: Open Library HTML Scraping with BeautifulSoup
+
+**File**: `Week 3 Seminar/exercise_week_3_seminar_bs4.py`
+
+This exercise demonstrates how to:
+- Fetch HTML pages from Open Library web interface (`https://openlibrary.org/search`)
+- Parse HTML structure using BeautifulSoup4
+- Extract data from specific HTML elements:
+  - Book titles from `div.resultTitle`
+  - Authors from `span.bookauthor` anchor tags
+- Handle multiple author names
+- Scrape across multiple pages with pagination
+
+**Example Usage**:
+```bash
+cd "Week 3 Seminar"
+python exercise_week_3_seminar_bs4.py
+```
+
+**Output**: 
+- Console display of 60 results (20 per page × 3 pages) for "data science" books
+- Saves formatted results to `data_science_results_bs4.txt` with clear page markers
+
+### Comparison: JSON API vs Web Scraping
+
+| Aspect | JSON API | BeautifulSoup (HTML) |
+|--------|----------|---------------------|
+| **Results per page** | 100 | 20 |
+| **Total results (3 pages)** | 300 | 60 |
+| **Data format** | JSON | HTML |
+| **Parsing method** | `json.loads()` | BeautifulSoup |
+| **Dependencies** | Built-in libraries | `beautifulsoup4` |
+| **Speed** | Faster (smaller payload) | Slower (larger HTML) |
+| **Reliability** | High (structured data) | Medium (depends on HTML structure) |
+| **Best for** | Programmatic access | When API unavailable |
 
 **Key Learnings**:
 - RESTful API concepts and HTTP requests
 - URL encoding and parameter management
-- JSON parsing with Python
+- JSON vs HTML parsing techniques
+- Web scraping with BeautifulSoup
 - Pagination for large result sets
 - File I/O operations
+- Comparing API and scraping approaches
 
 ## ✨ Features
 

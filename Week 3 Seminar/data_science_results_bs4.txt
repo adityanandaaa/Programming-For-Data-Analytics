@@ -1,0 +1,193 @@
+Found 60 results across pages 1-3 for 'data science':
+
+================================================================================
+PAGE 1 - 20 results
+================================================================================
+
+1. Title: Data science from scratch: first principles with Python
+   Author(s): Joel Grus
+
+2. Title: Data Science
+   Author(s): Tiffany-Anne Timbers, Trevor Campbell, Melissa Lee
+
+3. Title: Data Science for Business: What You Need to Know about Data Mining and Data-Analytic Thinking
+   Author(s): Foster Provost, Tom Fawcett
+
+4. Title: Ace the Data Science Interview: 201 Real Interview Questions Asked By FAANG, Tech Startups, & Wall Street
+   Author(s): Nick Singh, Kevin Huo
+
+5. Title: Python Data Science Handbook: Essential Tools for Working with Data
+   Author(s): Jake VanderPlas
+
+6. Title: NASA/DoD aerospace knowledge diffusion research project.
+   Author(s): Thomas E. Pinelli
+
+7. Title: Saggi morali.: Opera nuoua corretta, e data in luce dal sig. cavalier Andrea Cioli ...  Et vn Trattato della sapienza degl'antichi ...
+   Author(s): Francis Bacon
+
+8. Title: Pride and Prejudice: Lit for Little Hands
+   Author(s): Jane Austen
+
+9. Title: The Holy Bible
+   Author(s): Bible
+
+10. Title: The second sex
+   Author(s): Simone de Beauvoir
+
+11. Title: Financial management: NASA's financial reports are based on unreliable data : report to the Congress
+   Author(s): United States. General Accounting Office
+
+12. Title: Data Science for Dummies
+   Author(s): Lillian Pierson
+
+13. Title: [Security weaknesses at IRS' Cyberfile data center]
+   Author(s): United States. General Accounting Office
+
+14. Title: Data Science: a Practical Understanding of Data Science
+   Author(s): Ebonie Slough
+
+15. Title: Doing Data Science
+   Author(s): Rachel Schutt, Cathy O'Neil
+
+16. Title: Advances in Computers, Volume 60: Information Security (Advances in Computers)
+   Author(s): Marvin V. Zelkowitz, Marshall C. Yovits
+
+17. Title: Thinking Data Science: A Data Science Practitioner's Guidebook
+   Author(s): Poornachandra Sarang
+
+18. Title: Freakonomics: A Rogue Economist Explores the Hidden Side of Everything
+   Author(s): Steven D. Levitt, Stephen J. Dubner, Andrea Montero Cusset
+
+19. Title: Computer Science: An Overview (6th Edition)
+   Author(s): J. Glenn Brookshear, Brookshear
+
+20. Title: Houghton Mifflin Science: Science Support Reader  Chapter 10 Grade 4 Level 4 Using Weather Data
+   Author(s): Houghton Mifflin Company Staff
+
+================================================================================
+PAGE 2 - 20 results
+================================================================================
+
+21. Title: Spatial Data Science: Spatial Data Science
+   Author(s): Wilson, John P.
+
+22. Title: Secure Data Science
+   Author(s): Bhavani Thuraisingham, Murat Kantarcioglu, Latifur Khan
+
+23. Title: Data Science: Measuring Uncertainties
+   Author(s): Carlos Alberto de Bragança Pereira, Polpo Adriano
+
+24. Title: Big Data: Data Science
+   Author(s): Mouad Radi
+
+25. Title: Confident Data Science: Discover the Essential Skills of Data Science
+   Author(s): Adam Ross Nelson
+
+26. Title: Data Science: Techniques and Intelligent Applications
+   Author(s): Pallavi Vijay Chavan, Parikshit N. Mahalle, Ramchandra Mangrulkar, Idongesit Williams
+
+27. Title: Data Science: Main Principles
+   Author(s): Nicholas Brown
+
+28. Title: DATA SCIENCE
+   Author(s): ANALYTICS GOLD
+
+29. Title: Data Science
+   Author(s): Qurban A. Memon, Shakeel Ahmed Khoja
+
+30. Title: Physics for Science and Engineers
+   Author(s): Paul A. Tipler, Gene Mosca
+
+31. Title: There Are Two Types of People in the World Those Who Can Extrapolate from Incomplete Data: Computer Data Science Gift for Scientist
+   Author(s): Data Science Co
+
+32. Title: Business Intelligence, Analytics, and Data Science: A Managerial Perspective
+   Author(s): Ramesh Sharda, Dursun Delen, Efraim Turban
+
+33. Title: Data Science: Concepts and Practice
+   Author(s): Vijay Kotu, Bala Deshpande
+
+34. Title: Data Science
+   Author(s): John D. Kelleher, Brendan Tierney
+
+35. Title: Data Science: A Beginner's Guide
+   Author(s): C. Raju
+
+36. Title: Master in Data Science : a Practical Understanding of Data Science: Data Science Algorithms
+   Author(s): Ivan Vacek
+
+37. Title: Data Science Handbook
+   Author(s): Field Cady
+
+38. Title: Cracking the Data Science Interview: 101+ Data Science Questions & Solutions
+   Author(s): Maverick Lin
+
+39. Title: Data science
+   Author(s): John D. Kelleher, Brendan Tierney
+
+40. Title: Data Science: Theory and Applications
+   Author(s): C. R. Rao, Arni S. R. Srinivasa Rao
+
+================================================================================
+PAGE 3 - 20 results
+================================================================================
+
+41. Title: Data Science and Big Data Analytics: Discovering, Analyzing, Visualizing and Presenting Data
+   Author(s): EMC Education Services
+
+42. Title: Data Science
+   Author(s): Monika Freunek Muller
+
+43. Title: Data Science
+   Author(s): Robert Stahlbock, Gary M. Weiss, Mahmoud Abou-Nasr
+
+44. Title: Data Science: Questions and Answers
+   Author(s): George Duckett
+
+45. Title: Data Science
+   Author(s): H. Bhasin
+
+46. Title: Criptonomicon I: El codigo Engima (Ciencia Fccion / Science Fiction)
+   Author(s): Neal Stephenson
+
+47. Title: Data Science: Theory, Algorithms, and Applications
+   Author(s): Gyanendra K. Verma, Badal Soni, Salah Bourennane, Alexandre C. B. Ramos
+
+48. Title: Data Science: Mindset, Methodologies, and Misconceptions
+   Author(s): Zacharias Voulgaris
+
+49. Title: Javascript for Data Science
+   Author(s): Maya Gans, Toby Hodges, Greg Wilson
+
+50. Title: Practical Data Science with R
+   Author(s): John Mount
+
+51. Title: Python for Data Science: Comprehensive Guide to Data Science with Python
+   Author(s): Alex Campbell
+
+52. Title: Data Science: Best Practices Mit Python
+   Author(s): Benjamin M. Abdel-Karim
+
+53. Title: Data Science : the Complete Guide to Data Science for Beginners: Data Science Books You Should Read
+   Author(s): Sabra Deal
+
+54. Title: Data Science
+   Author(s): Ras
+
+55. Title: Data Science
+   Author(s): Michael Oettinger
+
+56. Title: Data Science
+   Author(s): I. G. I. Global
+
+57. Title: Data Science
+   Author(s): Tammy Barnes
+
+58. Title: Data Science: From Research to Application
+   Author(s): Mahdi Bohlouli, Bahram Sadeghi Bigham, Zahra Narimani, Mahdi Vasighi, Ebrahim Ansari
+
+59. Title: Data Science Solutions: Laptop Startup to Cloud Scale Data Science Workflow
+   Author(s): Manav Sehgal
+
+60. Title: DIY Data Science: A Practical Introduction to Data Science with Python
+   Author(s): Jonathan Dinu
