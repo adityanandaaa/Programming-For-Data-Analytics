@@ -258,6 +258,131 @@ explore_price_factors()             # Comprehensive factor analysis
 
 ---
 
+### Exercise 3: Penguins Dataset - Comprehensive EDA
+
+**Folder**: `Week 4 Seminar/penguins dataset exercise/`  
+**File**: `exercise_penguins_dataset_week_4.py`
+
+This exercise performs comprehensive **Exploratory Data Analysis (EDA)** on the **Penguins dataset** (344 penguin observations) to demonstrate data quality assessment, visualization techniques, and actionable preprocessing recommendations.
+
+#### Dataset Overview:
+- **344 observations** across 3 Antarctic penguin species
+- **7 features**: species, island, bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, sex
+- **3 species**: Adelie (152), Gentoo (124), Chinstrap (68)
+- **Missing values**: 2 numeric (0.58%), 11 sex values (3.2%)
+- **Target**: Classification (species prediction) with sex as secondary predictor
+
+#### Visualizations Created (4 Plots):
+
+1. **PLOT 1: Missing Values Heatmap** (`plot_1_missing_values_heatmap.png`)
+   - Visualizes data completeness across all variables
+   - Shows scattered missing values (not systematic)
+   - Identifies sex as most problematic variable (11 missing)
+   - **Insight**: Manageable missingness - can drop rows or impute
+
+2. **PLOT 2: Numeric Distributions - Species × Sex Analysis** (`plot_2_numeric_distributions.png`)
+   - **Layout**: 4×3 grid (4 numeric features × 3 species)
+   - **Feature rows**: Bill Length | Bill Depth | Flipper Length | Body Mass
+   - **Species columns**: Adelie | Chinstrap | Gentoo
+   - **Visualization**: Dual overlaid histograms (Male: blue, Female: red) + KDE curves
+   - **Enhancements**: Added sex granularity showing sexual dimorphism within each species
+   - **Key insights**:
+     - Species-specific distributions clearly separated
+     - Males consistently larger across all measurements (3-4mm bills, 300-500g mass)
+     - Adelie: Deepest, most compact bills; lightest body mass
+     - Chinstrap: Longest bills (>50mm) - diagnostic feature
+     - Gentoo: Shallowest bills, longest flippers, heaviest bodies
+     - Gentoo body mass shows right skew
+
+3. **PLOT 3: Species Relationships with Sex Analysis** (`plot_3_species_relationships.png`)
+   - **Layout**: 2×2 grid (4 complementary views)
+   - **Subplot 1**: Scatter plot (Bill Length vs Flipper Length) colored by species
+   - **Subplot 2**: Same scatter but colored by sex, shaped by species (shows sexual dimorphism)
+   - **Subplot 3**: Box plot of Body Mass by species × sex combinations
+   - **Subplot 4**: Violin plot (split by sex) showing Bill Length distributions
+   - **Key insights**:
+     - Nearly perfect species separability (minimal overlap)
+     - Sex-species interaction: 6 distinct populations (3 species × 2 sexes)
+     - Sexual dimorphism: ~300-400g mass difference
+     - Classification potential: Species ~99% separable; Sex detectable within species
+
+4. **PLOT 4: Correlation Analysis** (`plot_4_correlation_analysis.png`)
+   - **Correlation Heatmap**: Shows numeric feature relationships
+   - **Violin Plot**: Bill depth distribution across species
+   - **Key correlations**:
+     - Flipper length ↔ Body mass: 0.871 (strong multicollinearity)
+     - Bill length ↔ Flipper length: 0.656 (moderate)
+     - Bill depth ↔ Bill length: -0.235 (inverse, trade-off)
+     - Bill depth ↔ Flipper length: -0.584 (inverse, species-dependent)
+
+#### Key Functions:
+```python
+load_and_display_penguins_data()        # Load dataset, show stats and missing values
+plot_missing_values_analysis()          # PLOT 1: Missing values heatmap
+plot_distributions_numeric_features()  # PLOT 2: Species × sex distributions
+plot_species_relationships()            # PLOT 3: Species/sex relationships
+plot_correlation_analysis()             # PLOT 4: Correlation matrix + violin plots
+generate_eda_summary()                  # Comprehensive preprocessing recommendations
+```
+
+#### Comprehensive EDA Summary Output:
+The script generates a detailed **7-section EDA summary** with actionable recommendations:
+
+1. **Data Quality & Missingness Handling**
+   - Drop incomplete rows (recommended) or use KNN imputation
+   - Results in 333 complete observations
+
+2. **Feature Distributions & Transformations**
+   - Log transform for body_mass_g (right-skewed)
+   - StandardScaler for all numeric features
+
+3. **Categorical Encoding & Class Balance**
+   - One-hot encoding for species/island/sex
+   - Manageable class imbalance (2.2:1 ratio)
+
+4. **Outliers & Anomalies**
+   - All outliers are legitimate biological variations
+   - No erroneous measurements detected
+
+5. **Feature Engineering & Selection**
+   - Create interaction features: bill_ratio, size_index, mass_efficiency
+   - Manage multicollinearity (flipper_length & body_mass)
+   - Different strategies for linear vs tree-based models
+
+6. **Complete Preprocessing Pipeline**
+   - Drop missing values → Scale numerics → Encode categoricals
+   - Integrated with scikit-learn Pipeline
+
+7. **Model Development Guidance**
+   - Expected accuracy: >95% (features highly discriminative)
+   - Recommended models: Logistic Regression, Random Forest, XGBoost
+   - Classification should be nearly perfect (species nearly separable)
+
+#### Technologies Used:
+- **Seaborn**: Statistical plotting, KDE curves, multi-plot coordination
+- **Matplotlib**: Subplots, customization, figure saving (300 DPI PNG)
+- **Pandas**: Data loading, groupby, missing value analysis
+- **NumPy**: Numerical operations
+- **SciPy**: Kernel Density Estimation (gaussian_kde)
+
+#### Key Findings:
+
+| Aspect | Finding |
+|--------|---------|
+| **Species Separability** | Nearly perfect (>99% discriminative) |
+| **Primary Predictor** | Bill morphology (length + depth + flipper) |
+| **Secondary Predictor** | Sex (males consistently larger) |
+| **Best Feature** | Flipper length (high correlation with body mass) |
+| **Most Diagnostic** | Bill length for Chinstrap (>50mm threshold) |
+| **Multicollinearity** | Flipper length ↔ Body mass (r=0.871) |
+| **Transformation Needed** | Log scale for body_mass_g |
+| **Missing Data Impact** | Low (<4%), manageable |
+| **Expected ML Accuracy** | >95% (likely >97%) |
+
+---
+
+
+
 ## ✨ Features
 
 - **📈 Data Analysis**: Pandas-based data manipulation and analysis
