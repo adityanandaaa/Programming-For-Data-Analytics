@@ -837,18 +837,139 @@ np.isnan().any(axis=1)   # Boolean mask for rows with NaN
 - Data-driven decision making
 - Statistical validation before analysis
 
+---
+
+### Exercise 4: Data Filtering and Weighted Score Calculation
+
+**File**: `Week 5 Seminar/exercise_4_week_5.py`
+
+This exercise focuses on advanced data filtering with multiple conditions and calculating composite scores from multiple features.
+
+#### Exercise Questions:
+1. Select all records with meta_score greater than 95
+2. Optional: Also filter records where user_review is lower than 8
+3. Calculate weighted scores: `meta_score * 0.6 + user_review * 4`
+4. Compare filtering results and weighted scores
+5. Analyze statistical differences between datasets
+
+#### Detailed Solutions:
+
+**Part A: Basic Filtering (meta_score > 95)**
+```python
+# Create boolean mask
+mask = meta_score > 95
+
+# Filter data
+filtered_data = games_data[mask]
+
+# Statistics
+print(f"Filtered records: {filtered_data.shape[0]}")
+print(f"Percentage: {(filtered_data.shape[0] / games_data.shape[0]) * 100:.2f}%")
+```
+
+**Results:**
+- Records with meta_score > 95: **45 out of 1000 (4.5%)**
+- Mean meta_score: 96.67 (high-quality subset)
+- Mean user_review: 8.48 (strong user approval)
+
+**Part B: Combined Filtering (AND Logic)**
+```python
+# Create individual masks
+mask1 = meta_score > 95
+mask2 = user_review < 8
+
+# Combine with AND operator (&)
+combined_mask = (meta_score > 95) & (user_review < 8)
+
+# Filter data
+filtered_combined = games_data[combined_mask]
+```
+
+**Key Operators:**
+- `&` (AND): Both conditions must be True - **intersection**
+- `|` (OR): At least one condition is True - **union**
+- `~` (NOT): Inverts the mask - **complement**
+- **Important**: Use parentheses: `(mask1) & (mask2)`
+
+**Results:**
+- Records matching BOTH conditions: **8 out of 1000 (0.8%)**
+- Meta score range: [96.0, 98.0]
+- User review range: [6.2, 7.9]
+- Represents professionally excellent games with mixed user reviews
+
+**Part C: Weighted Score Calculation**
+```python
+# Weighted score formula
+weighted_score = meta_score * 0.6 + user_review * 4
+
+# For example:
+# meta_score=99.0, user_review=9.1 → 99*0.6 + 9.1*4 = 95.80
+# meta_score=98.0, user_review=7.4 → 98*0.6 + 7.4*4 = 88.40
+```
+
+**Formula Components:**
+- `meta_score * 0.6`: Professional rating (60% weight)
+- `user_review * 4`: User sentiment scaled (scaled to match contribution)
+- Result range: [46.2, 150.2] typically [60, 120]
+
+**Results:**
+- **All data**: Mean = 86.68, Std = 3.99, Range [66.00, 95.80]
+- **Filtered (meta > 95)**: Mean = 91.93, Std = 2.60, Range [83.00, 95.80]
+- **Difference**: Filtered subset has 5.25 higher average weighted score
+
+#### Concepts Demonstrated:
+- **Boolean Indexing**: Creating and applying boolean masks
+- **Multiple Conditions**: AND/OR logic for complex filtering
+- **Mask Operations**: Combining, inverting, and applying masks
+- **Weighted Scoring**: Multi-feature composite scoring
+- **Data Subsetting**: Comparing full vs filtered datasets
+- **Statistical Analysis**: Comparing means, stds, ranges
+- **Vectorized Operations**: Applying calculations to entire arrays
+
+#### Learning Outcomes:
+✅ Create complex boolean filters with multiple conditions  
+✅ Understand AND (&) vs OR (|) operators  
+✅ Apply weighted formulas to combine features  
+✅ Compare statistical properties of different subsets  
+✅ Interpret filtered dataset characteristics  
+✅ Calculate composite scores for ranking/recommendations  
+
+#### Key Functions:
+```python
+meta_score > 95          # Create boolean mask
+(mask1) & (mask2)        # Combine masks with AND
+(mask1) | (mask2)        # Combine masks with OR
+~mask                    # Invert mask (NOT)
+np.sum(mask)             # Count True values
+data[mask]               # Apply mask to filter
+np.nanmean() / np.nanstd() # Statistics with NaN handling
+np.percentile()          # Calculate quartiles
+```
+
+#### Data Insights:
+- **Filtering effectiveness**: AND logic reduces dataset from 4.5% to 0.8%
+- **High-quality games**: Professional scores > 95 represent elite quality
+- **Mixed reviews**: Some highly-rated games have lower user scores
+- **Weighted score**: Gives 37.5% more weight to meta_score vs user_review
+- **Composite ranking**: Useful for recommendation systems and filtering
+
+#### Practical Applications:
+- Game recommendation systems (filter by quality, score players)
+- E-commerce product filtering (multi-criteria selection)
+- Machine learning feature engineering (composite features)
+- Business intelligence (weighted KPI calculations)
+- Data quality filtering (remove outliers, find subgroups)
+- Ranking and recommendation algorithms
+
 #### Files in Week 5 Seminar:
 - `introduction_week_5_numpy.py` - Complete NumPy basics tutorial
 - `exercise_1_week_5.py` - Array manipulation exercise with detailed comments
 - `exercise_2_week_5.py` - CSV loading with data cleaning strategies
 - `exercise_3_week_5.py` - Data visualization and statistical analysis
-- `exercise_4_week_5.py` - Template for custom exercise
+- `exercise_4_week_5.py` - Data filtering and weighted score calculation
 - `tips.csv` - Sample dataset (244 restaurant tips)
 - `all_games.csv` - Video games dataset (18,802 records with metadata)
 - `tips.npy` - Binary NumPy format example
-- `exercise_3_distributions.png` - Distribution visualization output
-- `exercise_3_relationship.png` - Relationship visualization output
-- `exercise_3_statistics.png` - Statistical comparison output
 
 ---
 
