@@ -47,7 +47,8 @@ Programming_for_Data_Analytics/
 │   ├── introduction_week_5_numpy.py  # NumPy basics introduction
 │   ├── exercise_1_week_5.py          # NumPy array manipulation
 │   ├── exercise_2_week_5.py          # CSV loading with data cleaning
-│   ├── exercise_3_week_5.py          # Matrix operations and linear algebra
+│   ├── exercise_3_week_5.py          # Data visualization and statistical analysis
+│   ├── exercise_4_week_5.py          # Template for custom exercise
 │   ├── tips.csv          # Restaurant tips dataset
 │   ├── all_games.csv     # Video games dataset (18,802 records)
 │   └── tips.npy          # Binary NumPy format example
@@ -841,6 +842,7 @@ np.isnan().any(axis=1)   # Boolean mask for rows with NaN
 - `exercise_1_week_5.py` - Array manipulation exercise with detailed comments
 - `exercise_2_week_5.py` - CSV loading with data cleaning strategies
 - `exercise_3_week_5.py` - Data visualization and statistical analysis
+- `exercise_4_week_5.py` - Template for custom exercise
 - `tips.csv` - Sample dataset (244 restaurant tips)
 - `all_games.csv` - Video games dataset (18,802 records with metadata)
 - `tips.npy` - Binary NumPy format example
