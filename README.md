@@ -46,8 +46,9 @@ Programming_for_Data_Analytics/
 ├── Week 5 Seminar/       # Week 5 seminar exercises (NumPy fundamentals)
 │   ├── introduction_week_5_numpy.py  # NumPy basics introduction
 │   ├── exercise_1_week_5.py          # NumPy array manipulation
+│   ├── exercise_2_week_5.py          # CSV loading with data cleaning
 │   ├── tips.csv          # Restaurant tips dataset
-│   ├── all_games.csv     # Games dataset
+│   ├── all_games.csv     # Video games dataset (18,802 records)
 │   └── tips.npy          # Binary NumPy format example
 ├── requirements.txt      # Project dependencies
 ├── main.py              # Main entry point
@@ -574,11 +575,129 @@ The file contains two approaches:
 ✅ Perform efficient in-place array modifications  
 ✅ Recognize views vs copies for memory optimization
 
+---
+
+### Exercise 2: Loading CSV Data with Irregular Values
+
+**File**: `Week 5 Seminar/exercise_2_week_5.py`
+
+This exercise teaches practical data science skills by loading real-world CSV data with missing/irregular values and applying common data cleaning strategies.
+
+#### Exercise Question:
+Load the first 1000 records from `all_games.csv` into a NumPy array, selecting only the "meta_score" and "user_review" columns, and properly handle irregular data (e.g., "tbd" values).
+
+#### Detailed Solutions:
+
+**Part A: Data Loading**
+```python
+# Load CSV with irregular data handling
+games_data = np.genfromtxt(
+    csv_path,
+    delimiter=',',           # CSV format
+    skip_header=1,           # Skip header row
+    usecols=[2, 3],          # Select meta_score (col 2) and user_review (col 3)
+    max_rows=1000,           # Load first 1000 records
+    filling_values=np.nan,   # Replace irregular values with NaN
+    invalid_raise=False      # Don't raise error on non-numeric values
+)
+# Result: (1000, 2) array with 3 NaN values (0.15% missing)
+```
+
+**Key Data Characteristics:**
+- CSV has 7 columns: name, platform, meta_score, user_review, year, month, day
+- meta_score (column 2): Video game metadata score, mostly numeric with few missing values
+- user_review (column 3): User review scores, sometimes contains "tbd" (to be determined)
+- Total records in CSV: 18,802; Exercise loads first 1,000
+
+**Part B: Statistical Analysis with Missing Values**
+```python
+# Use NaN-aware functions for statistics
+print(f"Meta Score Mean: {np.nanmean(games_data[:, 0])}")        # 90.34
+print(f"Meta Score Median: {np.nanmedian(games_data[:, 0])}")    # 90.00
+print(f"User Review Mean: {np.nanmean(games_data[:, 1])}")       # 8.20
+print(f"User Review Median: {np.nanmedian(games_data[:, 1])}")   # 8.30
+```
+
+**NaN-Aware Functions:**
+- `np.nanmean()`: Mean excluding NaN values
+- `np.nanmedian()`: Median excluding NaN values
+- `np.nanstd()`: Standard deviation excluding NaN values
+- `np.nanmin() / np.nanmax()`: Min/max excluding NaN values
+- `np.isnan()`: Identify NaN values
+
+**Part C: Data Cleaning Strategies**
+
+**Strategy 1: Remove All Rows with Any NaN**
+```python
+# Create boolean mask for rows without NaN
+clean_rows = ~np.any(np.isnan(games_data), axis=1)
+cleaned_data = games_data[clean_rows]
+# Result: 997 rows (3 rows removed)
+# Advantage: Complete data, no missing values
+# Disadvantage: Data loss
+```
+
+**Strategy 2: Remove Specific Column NaN Only**
+```python
+# Remove rows where user_review is missing
+valid_rows = ~np.isnan(games_data[:, 1])
+cleaned_data = games_data[valid_rows]
+# Result: 998 rows (2 rows removed)
+# Advantage: Keeps meta_score data even if user_review missing
+# Disadvantage: Inconsistent column availability
+```
+
+**Strategy 3: Fill Missing Values with Column Mean**
+```python
+# Replace NaN with column mean
+for col in range(games_data.shape[1]):
+    col_mean = np.nanmean(games_data[:, col])
+    games_data[np.isnan(games_data[:, col]), col] = col_mean
+# Result: 1000 rows (0 NaN remaining)
+# Advantage: No data loss, retains all records
+# Disadvantage: Artificial values may bias analysis
+```
+
+#### Concepts Demonstrated:
+- **File I/O**: `np.genfromtxt()` with column selection and row limiting
+- **Data Quality**: Identifying and handling missing/irregular values
+- **NaN Handling**: NumPy functions that ignore NaN (nanmean, nanmedian, etc.)
+- **Boolean Indexing**: `axis` parameter for row-wise operations
+- **Data Cleaning**: Multiple strategies with different trade-offs
+- **Practical Decision-Making**: Choosing appropriate cleaning method
+
+#### Exercise Structure:
+The file contains two approaches:
+1. **Part 1**: Individual demonstrations
+   - Part A: Load and inspect data quality
+   - Part B: Calculate statistics with missing values
+   - Part C: Demonstrate three cleaning strategies
+2. **Part 2**: Complete sequence
+   - Full data science workflow from load to clean
+   - Shows how parts connect in real analysis pipeline
+
+#### Learning Outcomes:
+✅ Load real-world CSV data with missing values  
+✅ Identify data quality issues and NaN patterns  
+✅ Use NaN-aware statistical functions  
+✅ Apply multiple data cleaning strategies  
+✅ Understand trade-offs between cleaning approaches  
+✅ Work with practical datasets (all_games.csv)
+
+#### Data Summary:
+- **Total records**: 18,802
+- **Loaded for exercise**: 1,000 (first 1000 records)
+- **Columns used**: meta_score, user_review
+- **Missing values**: 3 NaN (0.15%)
+  - meta_score: 1 missing
+  - user_review: 2 missing (from "tbd" values)
+
 #### Files in Week 5 Seminar:
 - `introduction_week_5_numpy.py` - Complete NumPy basics tutorial
 - `exercise_1_week_5.py` - Array manipulation exercise with detailed comments
+- `exercise_2_week_5.py` - CSV loading with data cleaning strategies
 - `tips.csv` - Sample dataset (244 restaurant tips)
-- `all_games.csv` - Additional dataset for practice
+- `all_games.csv` - Video games dataset (18,802 records with metadata)
 - `tips.npy` - Binary NumPy format example
 
 ---
