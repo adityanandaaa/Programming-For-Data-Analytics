@@ -41,7 +41,14 @@ Programming_for_Data_Analytics/
 ├── Week 4 Seminar/       # Week 4 seminar exercises (data visualization)
 │   ├── data/             # Datasets for Week 4
 │   ├── irisdataset exercise/        # Iris dataset analysis
-│   └── diamonds dataset exercise/   # Diamonds dataset analysis
+│   ├── diamonds dataset exercise/   # Diamonds dataset analysis
+│   └── penguins dataset exercise/   # Penguins dataset EDA
+├── Week 5 Seminar/       # Week 5 seminar exercises (NumPy fundamentals)
+│   ├── introduction_week_5_numpy.py  # NumPy basics introduction
+│   ├── exercise_1_week_5.py          # NumPy array manipulation
+│   ├── tips.csv          # Restaurant tips dataset
+│   ├── all_games.csv     # Games dataset
+│   └── tips.npy          # Binary NumPy format example
 ├── requirements.txt      # Project dependencies
 ├── main.py              # Main entry point
 └── README.md            # This file
@@ -381,6 +388,200 @@ The script generates a detailed **7-section EDA summary** with actionable recomm
 
 ---
 
+## 📊 Week 5 Seminar
+
+The **Week 5 Seminar** folder contains exercises focused on **NumPy fundamentals** - the foundation library for numerical computing in Python.
+
+### Introduction: NumPy Basics
+
+**File**: `Week 5 Seminar/introduction_week_5_numpy.py`
+
+This comprehensive introduction covers fundamental NumPy operations and demonstrates why NumPy is essential for data analysis and scientific computing.
+
+#### Topics Covered:
+
+1. **NumPy Array Basics**
+   - Array creation with mixed types
+   - Automatic type conversion
+   - Understanding dtype (data types)
+
+2. **Loading Data from Text Files**
+   - `np.loadtxt()`: Fast loading for numeric data
+     - Parameters: skiprows, usecols, max_rows, delimiter
+   - `np.genfromtxt()`: Better handling of missing data
+     - Column name support with `names=True`
+   - Loading from `tips.csv` with different methods
+
+3. **Binary File Operations**
+   - `np.save()`: Save arrays in efficient .npy format
+   - `np.load()`: Load binary NumPy files
+   - Benefits: Faster I/O, preserves data types
+
+4. **Array Shapes and Dimensions**
+   - 1D arrays: `(n,)` shape
+   - 2D arrays: `(rows, cols)` shape
+   - 3D arrays: `(depth, rows, cols)` shape
+   - Understanding multi-dimensional data structures
+
+5. **Array Reshaping Operations**
+   - `reshape()`: Returns view (no data copying)
+   - `ravel()`: Flatten to 1D array
+   - `resize()`: In-place modification
+   - `transpose()` and `.T`: Swap axes
+   - Memory efficiency considerations
+
+6. **Computation Speed Differences**
+   - **List addition**: Concatenation `[1,2,3] + [4,5,6] = [1,2,3,4,5,6]`
+   - **NumPy addition**: Element-wise `[1,2,3] + [4,5,6] = [5,7,9]`
+   - **Performance**: NumPy is **100-120x faster** than Python lists
+   - Benchmark with 100,000 elements demonstrates dramatic speed advantage
+
+7. **Array Broadcasting**
+   - Operations between arrays of different shapes
+   - Automatic dimension expansion
+   - Example: `(2,3)` array × `(3,)` array = `(2,3)` result
+
+8. **Creating Special Arrays**
+   - `np.zeros()`: Array filled with zeros
+   - `np.ones()`: Array filled with ones
+   - `np.empty()`: Uninitialized array (faster but contains garbage values)
+   - Specifying dtype for memory efficiency
+
+9. **Array Indexing**
+   - Single element: `array[1, 2, 3]` for 3D arrays
+   - Slicing dimensions: `array[1, 2]` returns entire row
+   - Full slice: `array[1]` returns 2D slice of 3D array
+
+10. **Array Slicing Techniques**
+    - Basic slicing: `array[start:end]`
+    - Step parameter: `array[1:6:2]` (every 2nd element)
+    - Multi-dimensional: `array[0:2, 0:2, 0:2]`
+    - Index arrays: `array[i]` where i is array of indices
+
+11. **Advanced Indexing**
+    - **Fancy indexing**: `array[[2,4,5]]` select specific indices
+    - **Boolean masking**: `array[array > 50]` filter by condition
+    - **Multi-dimensional indexing**: `array[[0,1,2], [2,0,1]]` select specific elements
+
+#### Performance Comparison:
+```python
+# Speed test with 100,000 elements (100 iterations):
+NumPy array addition:    ~0.002 seconds
+List comprehension:      ~0.270 seconds
+Result: NumPy is 117x faster! 🚀
+```
+
+#### Key Functions Demonstrated:
+```python
+np.array()              # Create arrays
+np.random.randint()     # Generate random integers
+np.loadtxt()           # Load CSV data
+np.genfromtxt()        # Load with missing value handling
+np.save() / np.load()  # Binary file operations
+array.reshape()        # Change array dimensions
+array.ravel()          # Flatten array
+array.transpose()      # Swap axes
+np.zeros() / np.ones() # Special arrays
+```
+
+---
+
+### Exercise 1: NumPy Array Manipulation
+
+**File**: `Week 5 Seminar/exercise_1_week_5.py`
+
+This exercise practices fundamental NumPy operations through a structured workflow of array creation, manipulation, filtering, and modification.
+
+#### Exercise Questions:
+1. Create a 2D array of 16 random integers between 0 and 100
+2. Reshape the array into a 4×4 2D array
+3. Extract the subarray consisting of the last two columns of first two rows
+4. Find all numbers that are greater than 50 from the array
+5. Replace these numbers with 0
+
+#### Detailed Solutions:
+
+**Question 1: Create Random Array**
+```python
+# Generate 16 random integers in range [0, 100]
+array_1d = np.random.randint(0, 101, 16)  # 101 because upper bound is exclusive
+# Result: [55, 6, 65, 69, 56, 33, 1, 70, 8, 13, 79, 81, 63, 74, 88, 40]
+```
+
+**Question 2: Reshape to 4×4**
+```python
+# Convert 1D array to 2D array (4 rows × 4 columns)
+array_2d = array_1d.reshape(4, 4)
+# Result:
+# [[55,  6, 65, 69]
+#  [56, 33,  1, 70]
+#  [ 8, 13, 79, 81]
+#  [63, 74, 88, 40]]
+```
+
+**Question 3: Extract Subarray**
+```python
+# Slice first 2 rows, last 2 columns
+subarray = array_2d[0:2, 2:4]  # or array_2d[:2, -2:]
+# Result:
+# [[65, 69]
+#  [ 1, 70]]
+```
+
+**Question 4: Find Values > 50**
+```python
+# Boolean masking creates True/False array
+mask = array_2d > 50
+numbers_gt_50 = array_2d[mask]
+# Result: [55, 65, 69, 56, 70, 79, 81, 63, 74, 88]
+# Count: 10 elements
+```
+
+**Question 5: Replace with 0**
+```python
+# In-place modification using boolean indexing
+array_2d[mask] = 0
+# Result:
+# [[ 0,  6,  0,  0]
+#  [ 0, 33,  1,  0]
+#  [ 8, 13,  0,  0]
+#  [ 0,  0,  0, 40]]
+```
+
+#### Concepts Demonstrated:
+- **Random number generation**: `np.random.randint(low, high, size)`
+- **Array reshaping**: `.reshape(rows, cols)` converts dimensions
+- **Array slicing**: `[row_slice, col_slice]` extracts subarrays
+- **Boolean masking**: Conditional filtering with `array > value`
+- **In-place modification**: `array[mask] = new_value` efficient updates
+- **Views vs copies**: Understanding memory efficiency
+
+#### Exercise Structure:
+The file contains two approaches:
+1. **Part 1**: Individual demonstrations (separate arrays for each concept)
+   - Part A: Create and reshape
+   - Part B: Extract subarray
+   - Part C: Find and replace
+2. **Part 2**: Complete sequence (all operations on single array)
+   - Shows full data processing pipeline
+   - Demonstrates how operations chain together
+
+#### Learning Outcomes:
+✅ Understand NumPy array creation and random generation  
+✅ Master array reshaping and dimension manipulation  
+✅ Practice multi-dimensional slicing techniques  
+✅ Apply boolean indexing for filtering  
+✅ Perform efficient in-place array modifications  
+✅ Recognize views vs copies for memory optimization
+
+#### Files in Week 5 Seminar:
+- `introduction_week_5_numpy.py` - Complete NumPy basics tutorial
+- `exercise_1_week_5.py` - Array manipulation exercise with detailed comments
+- `tips.csv` - Sample dataset (244 restaurant tips)
+- `all_games.csv` - Additional dataset for practice
+- `tips.npy` - Binary NumPy format example
+
+---
 
 
 ## ✨ Features
@@ -395,12 +596,15 @@ The script generates a detailed **7-section EDA summary** with actionable recomm
 ## 🛠️ Technologies
 
 - **Python 3.9+**
-- **Pandas**: Data manipulation
-- **NumPy**: Numerical computing
-- **Matplotlib**: Visualization
+- **Pandas**: Data manipulation and analysis
+- **NumPy**: Numerical computing and array operations
+- **Matplotlib**: Data visualization and plotting
 - **Seaborn**: Statistical visualization
+- **SciPy**: Scientific computing and statistics
 - **Jupyter**: Interactive notebooks
 - **pytest**: Testing framework
+- **BeautifulSoup4**: Web scraping
+- **requests**: HTTP library for API calls
 
 ## 📋 Requirements
 
@@ -411,8 +615,11 @@ pandas>=2.0.0
 numpy>=1.20.0
 matplotlib>=3.5.0
 seaborn>=0.12.0
+scipy>=1.13.0
 jupyter>=1.0.0
 pytest>=7.0.0
+beautifulsoup4>=4.12.0
+requests>=2.31.0
 ```
 
 ## 🏃 Running the Project
@@ -434,6 +641,27 @@ jupyter notebook
 
 ## 📊 Example Workflows
 
+### Week 3: API Integration & Web Scraping
+1. **Fetch Data**: Use REST APIs or web scraping
+2. **Parse Responses**: Extract structured data from JSON/HTML
+3. **Paginate**: Handle multiple pages of results
+4. **Save Results**: Write data to text files
+
+### Week 4: Data Visualization & EDA
+1. **Load Data**: Read datasets using Seaborn/Pandas
+2. **Explore**: Summary statistics and distributions
+3. **Visualize**: Create histograms, scatter plots, box plots, heatmaps
+4. **Analyze Relationships**: Correlation analysis and feature relationships
+5. **Generate Insights**: Extract actionable preprocessing recommendations
+
+### Week 5: NumPy Operations
+1. **Create Arrays**: Generate random data or load from CSV
+2. **Reshape**: Transform array dimensions
+3. **Slice**: Extract subarrays using advanced indexing
+4. **Filter**: Apply boolean masking for conditional operations
+5. **Modify**: Perform efficient in-place transformations
+
+### General Data Analysis Pipeline
 1. **Load Data**: Read CSV/Excel files
 2. **Explore**: Summary statistics and data profiling
 3. **Clean**: Handle missing values and outliers
