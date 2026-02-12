@@ -47,6 +47,7 @@ Programming_for_Data_Analytics/
 │   ├── introduction_week_5_numpy.py  # NumPy basics introduction
 │   ├── exercise_1_week_5.py          # NumPy array manipulation
 │   ├── exercise_2_week_5.py          # CSV loading with data cleaning
+│   ├── exercise_3_week_5.py          # Matrix operations and linear algebra
 │   ├── tips.csv          # Restaurant tips dataset
 │   ├── all_games.csv     # Video games dataset (18,802 records)
 │   └── tips.npy          # Binary NumPy format example
@@ -692,13 +693,160 @@ The file contains two approaches:
   - meta_score: 1 missing
   - user_review: 2 missing (from "tbd" values)
 
+---
+
+### Exercise 3: Data Visualization and Statistical Analysis
+
+**File**: `Week 5 Seminar/exercise_3_week_5.py`
+
+This exercise focuses on exploratory data analysis (EDA) through visualization and statistical analysis of real datasets, with emphasis on handling missing data (NaN values).
+
+#### Exercise Questions:
+1. Visualize the distribution of meta_score and user_review
+2. Visualize the relationship between meta_score and user_review
+3. Find the average and standard deviation of meta_score and user_review
+4. Remove rows with NaN values and repeat the analysis
+5. Compare statistics before and after data cleaning
+
+#### Detailed Solutions:
+
+**Part A: Distribution Visualization**
+```python
+# Create histograms with KDE overlay
+sns.histplot(meta_score, kde=True, bins=30, color='steelblue', stat='density')
+
+# Box plot for comparison
+plt.boxplot([meta_score, user_review], labels=['Meta Score', 'User Review'])
+
+# Violin plot for distribution shape
+plt.violinplot([meta_score], positions=[1], showmeans=True)
+```
+
+**Key Concepts:**
+- **Histogram**: Shows frequency distribution of values
+- **KDE (Kernel Density Estimation)**: Smooth estimate of probability distribution
+- **Box Plot**: Displays quartiles, median, and outliers
+- **Violin Plot**: Shows distribution shape and density
+
+**Part B: Relationship Visualization**
+```python
+# Scatter plot with regression line
+plt.scatter(meta_score, user_review, alpha=0.6)
+z = np.polyfit(meta_score, user_review, 1)  # Fit line
+p = np.poly1d(z)
+plt.plot(x_line, p(x_line), "r-")  # Plot line
+
+# Calculate correlation
+correlation = np.corrcoef(meta_score, user_review)[0, 1]
+
+# 2D density plot (hexbin)
+plt.hexbin(meta_score, user_review, gridsize=20, cmap='YlOrRd')
+```
+
+**Correlation Interpretation:**
+- **Strong positive** (> 0.7): Variables move together
+- **Moderate positive** (0.3-0.7): Some relationship
+- **Weak positive** (< 0.3): Slight relationship
+- **Near zero**: Little to no linear relationship
+- **Negative values**: Inverse relationship
+
+**Part C: Statistical Analysis with NaN Handling**
+```python
+# Statistics with NaN present (using NaN-aware functions)
+meta_mean_with_nan = np.nanmean(meta_score)
+meta_std_with_nan = np.nanstd(meta_score)
+
+# Remove rows with any NaN values
+clean_data = games_data[~np.isnan(games_data).any(axis=1)]
+
+# Statistics on clean data
+meta_mean_clean = np.mean(clean_data[:, 0])
+meta_std_clean = np.std(clean_data[:, 0])
+```
+
+**NaN Handling Techniques:**
+- `np.nanmean()`: Calculate mean ignoring NaN values
+- `np.nanstd()`: Calculate std dev ignoring NaN values
+- `np.isnan(a).any(axis=1)`: Check for NaN in each row
+- `a[~np.isnan(a).any(axis=1)]`: Remove rows with any NaN
+
+**Impact of Missing Data:**
+- Small impact on mean (often < 1%)
+- Large impact on std dev (can be 200%+ different)
+- Std dev highly sensitive to missing value patterns
+- Clean data provides more reliable statistics
+
+#### Visualizations Created:
+1. **exercise_3_distributions.png**: Histograms, box plot, violin plot
+   - Shows data spread and distribution shapes
+   - Compares ranges between variables
+   
+2. **exercise_3_relationship.png**: Scatter plot, regression line, 2D density
+   - Shows correlation between variables
+   - Identifies point concentrations
+   
+3. **exercise_3_statistics.png**: Mean and std comparison
+   - Quantifies impact of NaN removal
+   - Visual evidence of data quality effects
+
+#### Concepts Demonstrated:
+- **Exploratory Data Analysis (EDA)**: Visual data understanding
+- **Distribution Analysis**: Histograms, KDE, box plots, violin plots
+- **Correlation Analysis**: Scatter plots, regression lines, Pearson coefficient
+- **NaN-Aware Statistics**: Functions that handle missing data gracefully
+- **Data Cleaning**: Boolean indexing for removing missing rows
+- **Data Quality Assessment**: Comparing statistics before/after cleaning
+- **Visualization Best Practices**: Multiple plot types for different insights
+
+#### Learning Outcomes:
+✅ Create meaningful visualizations for exploratory data analysis  
+✅ Interpret histograms, box plots, and violin plots  
+✅ Calculate and interpret correlation coefficients  
+✅ Use NaN-aware statistical functions  
+✅ Remove missing data using boolean indexing  
+✅ Quantify impact of data quality on statistics  
+✅ Generate professional-quality data analysis reports
+
+#### Key Functions and Techniques:
+```python
+sns.histplot()           # Enhanced histograms with KDE
+plt.boxplot()            # Box plot visualization
+plt.violinplot()         # Violin plot for distribution
+plt.scatter()            # Scatter plot for relationships
+plt.hexbin()             # 2D density plot
+np.polyfit()             # Fit polynomial (regression line)
+np.poly1d()              # Create polynomial function
+np.corrcoef()            # Calculate correlation coefficient
+np.nanmean() / np.nanstd() # Statistics ignoring NaN
+np.isnan().any(axis=1)   # Boolean mask for rows with NaN
+```
+
+#### Data Insights from Exercise:
+- **Meta Score**: Mean = 90.35, Std = 2.40 (tight distribution)
+- **User Review**: Mean = 8.12, Std = 0.86 (after cleaning)
+- **Correlation**: 0.22 (weak positive - some relationship)
+- **Missing Data**: 3 rows removed (0.3% of 1000)
+- **Data Quality**: Std dev changed 215% after removing NaN (user_review)
+
+#### Practical Applications:
+- Exploratory Data Analysis (EDA) before machine learning
+- Quality assurance for datasets
+- Feature correlation analysis
+- Report generation with insights
+- Data-driven decision making
+- Statistical validation before analysis
+
 #### Files in Week 5 Seminar:
 - `introduction_week_5_numpy.py` - Complete NumPy basics tutorial
 - `exercise_1_week_5.py` - Array manipulation exercise with detailed comments
 - `exercise_2_week_5.py` - CSV loading with data cleaning strategies
+- `exercise_3_week_5.py` - Data visualization and statistical analysis
 - `tips.csv` - Sample dataset (244 restaurant tips)
 - `all_games.csv` - Video games dataset (18,802 records with metadata)
 - `tips.npy` - Binary NumPy format example
+- `exercise_3_distributions.png` - Distribution visualization output
+- `exercise_3_relationship.png` - Relationship visualization output
+- `exercise_3_statistics.png` - Statistical comparison output
 
 ---
 
