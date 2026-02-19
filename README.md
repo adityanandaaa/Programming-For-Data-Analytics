@@ -57,10 +57,11 @@ Programming_for_Data_Analytics/
 │   ├── exercise_1_case_study_1_house_pricing.py  # Case Study 1: House pricing basics
 │   ├── exercise_2_case_study_1_house_pricing.py  # Case Study 1: Advanced indexing
 │   ├── exercise_3_case_study_1_house_pricing.py  # Case Study 1: Exploratory data analysis
+│   ├── exercise_1_case_study_2_customer_churn.py  # Case Study 2: Customer churn EDA
 │   └── data source/      # Datasets for Week 6
 │       ├── house_price.csv      # House sales data (CSV format, 1,460 records)
 │       ├── house_price.xlsx     # House sales data (Excel format)
-│       └── customer_churn.csv   # Customer churn dataset
+│       └── customer_churn.csv   # Customer churn dataset (7,043 records)
 ├── requirements.txt      # Project dependencies
 ├── main.py              # Main entry point
 └── README.md            # This file
@@ -1191,14 +1192,18 @@ df.equals(other_df)              # Compare DataFrames
 
 #### Files in Week 6 Seminar:
 - `introduction_week_6_pandas.py` - Comprehensive Pandas basics lecture (12 topics, 615 lines)
-- `exercise_1_case_study_1_house_pricing.py` - Case Study 1: Data import and exploration (234 lines)
-- `exercise_2_case_study_1_house_pricing.py` - Case Study 1: Advanced indexing and filtering (309 lines)
-- `exercise_3_case_study_1_house_pricing.py` - Case Study 1: Exploratory data analysis (593 lines)
-- `data source/house_price.csv` - House sales dataset (CSV format, 1,460 records)
-- `data source/house_price.xlsx` - House sales dataset (Excel format, 1,460 records)
-- `data source/customer_churn.csv` - Customer churn dataset
+- **Case Study 1: House Pricing Analysis**
+  - `exercise_1_case_study_1_house_pricing.py` - Data import and exploration (234 lines)
+  - `exercise_2_case_study_1_house_pricing.py` - Advanced indexing and filtering (309 lines)
+  - `exercise_3_case_study_1_house_pricing.py` - Exploratory data analysis (593 lines)
+- **Case Study 2: Customer Churn Analysis**
+  - `exercise_1_case_study_2_customer_churn.py` - Complete EDA with data quality audit (685 lines)
+- **Datasets**
+  - `data source/house_price.csv` - House sales dataset (CSV format, 1,460 records)
+  - `data source/house_price.xlsx` - House sales dataset (Excel format, 1,460 records)
+  - `data source/customer_churn.csv` - Telco customer churn dataset (7,043 records, 21 columns)
 
-**Note**: Visualization outputs (PNG files) and sample sales data are generated when running the introduction file.
+**Note**: Visualization outputs (PNG files) and sample sales data are generated when running the exercise files.
 
 ---
 
@@ -1651,6 +1656,369 @@ df.select_dtypes()               # Filter columns by type
 - Real estate market analysis
 - Academic research data profiling
 - Stakeholder presentation preparation
+
+---
+
+### Case Study 2: Customer Churn Analysis - Complete EDA
+
+**File**: `Week 6 Seminar/exercise_1_case_study_2_customer_churn.py` (685 lines)
+**Dataset**: Telco Customer Churn (Kaggle)  
+**Records**: 7,043 customers × 21 columns
+
+This comprehensive case study demonstrates real-world data analysis workflow including data quality auditing, issue identification, data cleaning, and actionable business insights extraction from a customer churn dataset.
+
+#### Dataset Overview:
+
+**Source**: https://www.kaggle.com/datasets/blastchar/telco-customer-churn
+
+**Columns** (21 total):
+- **Customer Info**: customerID
+- **Demographics** (4): gender, SeniorCitizen, Partner, Dependents
+- **Account Info** (4): tenure, Contract, PaperlessBilling, PaymentMethod
+- **Services** (9): PhoneService, MultipleLines, InternetService, OnlineSecurity, OnlineBackup, DeviceProtection, TechSupport, StreamingTV, StreamingMovies
+- **Charges** (2): MonthlyCharges, TotalCharges
+- **Target**: Churn (Yes/No)
+
+---
+
+#### The Critical Issue (THE HINT!):
+
+**🚨 Data Quality Problem Identified**:
+```python
+# TotalCharges column stored as 'object' instead of numeric!
+df_churn['TotalCharges'].dtype  # Returns: object (WRONG!)
+
+# Investigation reveals:
+# - 11 records contain empty string values (' ')
+# - All problematic records have tenure = 0 (new customers)
+# - Empty strings prevent numeric operations
+```
+
+**Root Cause**: New customers (tenure=0) have no billing history, resulting in empty TotalCharges values saved as whitespace strings instead of NaN or 0.
+
+**Resolution Strategy**:
+```python
+# Convert to numeric, coercing errors to NaN
+df_clean['TotalCharges'] = pd.to_numeric(df_clean['TotalCharges'], errors='coerce')
+
+# Impute missing values with MonthlyCharges
+# (For new customers, TotalCharges ≈ MonthlyCharges)
+mask_missing = df_clean['TotalCharges'].isnull()
+df_clean.loc[mask_missing, 'TotalCharges'] = df_clean.loc[mask_missing, 'MonthlyCharges']
+```
+
+**Key Learning**: Always audit data types! Numeric columns stored as text prevent statistical operations and indicate upstream data quality issues.
+
+---
+
+#### Analysis Steps (14 comprehensive steps):
+
+**STEP 1: Import Dataset**
+- Load 7,043 customer records
+- Initial data preview with `.head()` and `.tail()`
+
+**STEP 2: Initial Data Inspection**
+- `.info()` reveals data types and non-null counts
+- Check for duplicates (0 found)
+- Verify unique customer IDs (no duplicates)
+
+**STEP 3: Missing Values Analysis**
+- Explicit NaN values: 0 (none detected initially)
+- Hidden issues require deeper audit
+
+**STEP 4: Data Type Audit** ⚠️ **CRITICAL STEP**
+- Systematic review of all column types
+- **Issue identified**: TotalCharges as 'object' instead of numeric
+- Investigation reveals 11 empty string values
+- All problematic records have tenure = 0
+
+**STEP 5: Fix Data Quality Issues**
+- Convert TotalCharges to numeric
+- Impute 11 missing values using MonthlyCharges
+- Validate cleaning success
+
+**STEP 6: Statistical Summary**
+- Separate numeric (SeniorCitizen, tenure, MonthlyCharges, TotalCharges) from categorical
+- Generate descriptive statistics with `.describe()`
+
+**STEP 7: Target Variable Analysis - Churn**
+- Overall churn rate: **26.54%**
+- Distribution: 5,174 retained (73.46%), 1,869 churned (26.54%)
+- Visualize with bar chart
+
+**STEP 8: Demographic Analysis**
+- Gender, SeniorCitizen, Partner, Dependents
+- Calculate churn rates for each demographic segment
+- Visualize with grouped bar charts
+
+**STEP 9: Service Usage Analysis**
+- Analyze 9 service features
+- Identify which services correlate with churn
+- Subscription rates and churn percentages
+
+**STEP 10: Contract and Payment Analysis**
+- Contract type distributions and churn rates
+- Payment method impact on retention
+- Visualize with comparative bar charts
+
+**STEP 11: Tenure Analysis**
+- Distribution comparison between churned vs retained
+- Statistical comparison of tenure patterns
+- Histogram and box plot visualizations
+
+**STEP 12: Charges Analysis**
+- MonthlyCharges and TotalCharges distributions
+- Compare charges between churned and retained customers
+- 4-panel visualization (histograms + box plots)
+
+**STEP 13: Correlation Analysis**
+- Convert Churn to binary for correlation
+- Compute correlation matrix for numeric features
+- Heatmap visualization
+
+**STEP 14: Key Insights Summary**
+- Comprehensive findings report
+- Business recommendations
+- Actionable retention strategies
+
+---
+
+#### Key Findings:
+
+**1. Churn Rate**: 26.54% overall (1,869 of 7,043 customers)
+
+**2. Demographics**:
+- **Senior Citizens**: 41.68% churn (HIGH RISK)
+- **No Partner**: 32.96% churn vs 19.66% with partner
+- **No Dependents**: 31.28% churn vs 15.53% with dependents
+- **Gender**: Minimal difference (26.92% male, 26.16% female)
+
+**3. Contract Type** - **MOST CRITICAL FACTOR**:
+```
+Month-to-month: 42.71% churn  ← VERY HIGH RISK
+One year:       11.27% churn
+Two year:        2.83% churn  ← VERY LOW RISK
+```
+**15x difference** between month-to-month and two-year contracts!
+
+**4. Payment Method**:
+```
+Electronic check:            45.29% churn  ← HIGHEST RISK
+Mailed check:               19.08% churn
+Bank transfer (automatic):  16.69% churn
+Credit card (automatic):    15.22% churn  ← LOWEST RISK
+```
+Automatic payment methods have 3x lower churn than electronic check.
+
+**5. Tenure Patterns**:
+- **Churned customers**: Average 18.0 months tenure
+- **Retained customers**: Average 37.6 months tenure
+- First 6 months are critical retention period
+- Customers with >2 years tenure rarely churn
+
+**6. Charges Impact**:
+- **Churned customers**: $74.44 avg monthly charges (+21% higher)
+- **Retained customers**: $61.27 avg monthly charges
+- Higher prices correlate with higher churn
+- Total charges show inverse correlation (-0.198) - long-term customers pay more total but churn less
+
+**7. Internet Service**:
+```
+Fiber optic: 41.89% churn  ← PREMIUM SERVICE, HIGH CHURN
+DSL:         18.96% churn
+No service:   7.40% churn  ← LOWEST CHURN
+```
+Counter-intuitive: Fiber optic has **2.2x higher** churn despite being premium service!
+
+**8. Value-Added Services** (customers WITHOUT these churn more):
+- **No OnlineSecurity**: 41.84% churn vs 14.55% with security
+- **No TechSupport**: 41.71% churn vs 15.21% with support
+- **No OnlineBackup**: 39.96% churn vs 21.63% with backup
+
+---
+
+#### Correlations with Churn:
+
+```python
+tenure:         -0.352  (Moderate negative - longer tenure = less churn)
+TotalCharges:   -0.198  (Weak negative)
+MonthlyCharges:  0.193  (Weak positive - higher price = more churn)
+SeniorCitizen:   0.151  (Weak positive)
+```
+
+---
+
+#### Visualizations Created (6 files):
+
+1. **exercise_cs2_churn_distribution.png**
+   - Bar chart showing 73.46% retention vs 26.54% churn
+   - Clear visual of imbalanced target variable
+
+2. **exercise_cs2_demographics_churn.png**
+   - 2×2 grid of demographic factors
+   - Percentage-based comparison showing churn rates
+   - Highlights senior citizens and singles as high-risk
+
+3. **exercise_cs2_contract_payment_churn.png**
+   - Contract type vs payment method analysis
+   - Clearly shows month-to-month contract risk
+   - Electronic check payment red flag
+
+4. **exercise_cs2_tenure_analysis.png**
+   - Histogram + box plot combination
+   - Shows churned customers cluster in 0-10 month range
+   - Retained customers spread across longer tenure
+
+5. **exercise_cs2_charges_analysis.png**
+   - 4-panel analysis: Monthly and Total charges
+   - Histograms and box plots for both
+   - Churned customers have higher monthly but lower total charges
+
+6. **exercise_cs2_correlation_matrix.png**
+   - Heatmap of numeric feature correlations
+   - Tenure shows strongest negative correlation with churn
+   - MonthlyCharges shows positive correlation
+
+---
+
+#### Business Recommendations:
+
+**1. CONTRACT INCENTIVE PROGRAM** (Highest Priority):
+```
+Problem: Month-to-month customers have 42.71% churn
+Solution: 
+  • Offer 15-20% discount for upgrading to annual contract
+  • Provide exclusive perks for 2-year commitments (free upgrades, priority support)
+  • Expected impact: Could reduce churn by 50% in month-to-month segment
+```
+
+**2. PAYMENT METHOD OPTIMIZATION**:
+```
+Problem: Electronic check has 45.29% churn (3x higher than auto-pay)
+Solution:
+  • Investigate: Is payment experience poor? Failed payments?
+  • Incentivize automatic payment adoption (5% discount or waived fees)
+  • Simplify payment process for electronic check users
+```
+
+**3. EARLY INTERVENTION PROGRAM**:
+```
+Problem: Average churned customer tenure is only 18 months
+Solution:
+  • Implement 30-60-90 day onboarding checkpoints
+  • Proactive outreach to customers in first 6 months
+  • Welcome package with value-added services trial
+  • Personal account manager for first 3 months
+```
+
+**4. SENIOR CITIZEN SUPPORT**:
+```
+Problem: 41.68% churn among senior citizens
+Solution:
+  • Dedicated senior support hotline (toll-free, 24/7)
+  • Simplified service packages tailored to seniors
+  • In-person or video tutorials for service features
+  • Senior citizen discount program (10-15% off)
+```
+
+**5. FIBER OPTIC SERVICE REVIEW**:
+```
+Problem: 41.89% churn despite premium pricing
+Solution:
+  • Customer satisfaction survey for fiber optic users
+  • Service quality audit (speed tests, downtime analysis)
+  • Review pricing vs competitor offerings
+  • May indicate service quality or value perception issues
+```
+
+**6. VALUE-ADDED SERVICES BUNDLING**:
+```
+Problem: Customers without security/support/backup services churn at 40%+
+Solution:
+  • Bundle OnlineSecurity + TechSupport + Backup as "Peace of Mind" package
+  • Include for free in first 3 months, then discounted pricing
+  • Gamification: Unlock features based on tenure milestones
+```
+
+**7. PRICING STRATEGY ADJUSTMENT**:
+```
+Problem: $74.44 avg monthly for churned vs $61.27 for retained
+Solution:
+  • Introduce loyalty discounts after 12/24/36 months
+  • Price freeze guarantee for long-term contract holders
+  • Transparent pricing (no surprise increases)
+```
+
+---
+
+#### Concepts Demonstrated:
+
+- **Data Quality Auditing**: Systematic data type verification
+- **Hidden Issues Detection**: Finding non-obvious problems (empty strings)
+- **Data Cleaning**: Type conversion with `pd.to_numeric(errors='coerce')`
+- **Imputation Strategies**: Logic-based missing value filling
+- **Target Variable Analysis**: Class imbalance assessment
+- **Segmentation Analysis**: Churn rates across multiple dimensions
+- **Correlation Studies**: Numeric feature relationships with target
+- **Cross-Tabulation**: `pd.crosstab()` for categorical analysis
+- **Comparative Statistics**: Group-based statistical comparisons
+- **Business Intelligence**: Translating statistics to actionable recommendations
+
+#### Learning Outcomes:
+✅ Conduct comprehensive data quality audits  
+✅ Identify and resolve data type issues  
+✅ Handle hidden missing values (empty strings, whitespace)  
+✅ Implement logic-based imputation strategies  
+✅ Analyze target variable distributions  
+✅ Calculate and interpret churn rates across segments  
+✅ Compare statistical distributions between groups  
+✅ Create business-focused visualizations  
+✅ Extract actionable insights from exploratory analysis  
+✅ Formulate data-driven business recommendations  
+✅ Present findings in executive summary format  
+
+#### Key Functions Used:
+```python
+pd.read_csv()                      # Import dataset
+df.info()                          # Data structure inspection
+df.duplicated().sum()              # Duplicate detection
+df.select_dtypes()                 # Filter columns by type
+pd.to_numeric(errors='coerce')     # Safe numeric conversion
+df.isnull().sum()                  # Missing value counts
+df.value_counts(normalize=True)    # Frequency distributions
+df.groupby().apply()               # Custom aggregations
+pd.crosstab(normalize='index')     # Cross-tabulation analysis
+df.corr()                          # Correlation matrix
+df.boxplot(by='column')            # Grouped box plots
+sns.heatmap()                      # Correlation visualization
+plt.hist() with overlays           # Comparative histograms
+```
+
+#### Data Insights Summary Table:
+
+| Category | Metric | Value | Interpretation |
+|----------|--------|-------|----------------|
+| **Overall** | Churn Rate | 26.54% | Significant retention challenge |
+| **Contract** | Month-to-month | 42.71% | Highest risk segment |
+| **Contract** | Two-year | 2.83% | Most stable segment |
+| **Payment** | Electronic check | 45.29% | Review payment UX |
+| **Payment** | Auto-payment | ~16% | Encourage adoption |
+| **Tenure** | Churned avg | 18 months | Early intervention needed |
+| **Tenure** | Retained avg | 37.6 months | Loyalty pays off |
+| **Demographics** | Senior citizen | 41.68% | Targeted support required |
+| **Service** | Fiber optic | 41.89% | Quality/value issue? |
+| **Service** | No OnlineSecurity | 41.84% | Bundle opportunity |
+
+#### Practical Applications:
+- Customer retention strategy development
+- Churn prediction model preparation
+- Marketing campaign segmentation
+- Service pricing optimization
+- Customer lifetime value analysis
+- Product bundling strategy
+- Risk segmentation for targeted interventions
+- Executive dashboard development
+- KPI tracking and monitoring
 
 ---
 
