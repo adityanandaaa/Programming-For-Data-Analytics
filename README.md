@@ -48,10 +48,19 @@ Programming_for_Data_Analytics/
 │   ├── exercise_1_week_5.py          # NumPy array manipulation
 │   ├── exercise_2_week_5.py          # CSV loading with data cleaning
 │   ├── exercise_3_week_5.py          # Data visualization and statistical analysis
-│   ├── exercise_4_week_5.py          # Template for custom exercise
+│   ├── exercise_4_week_5.py          # Data filtering and weighted score calculation
 │   ├── tips.csv          # Restaurant tips dataset
 │   ├── all_games.csv     # Video games dataset (18,802 records)
 │   └── tips.npy          # Binary NumPy format example
+├── Week 6 Seminar/       # Week 6 seminar exercises (Pandas fundamentals)
+│   ├── introduction_week_6_pandas.py  # Pandas basics lecture (from notebook)
+│   ├── exercise_1_case_study_house_pricing.py  # House pricing case study
+│   ├── data source/      # Datasets for Week 6
+│   │   ├── house_price.csv      # House sales data (CSV format)
+│   │   ├── house_price.xlsx     # House sales data (Excel format)
+│   │   └── customer_churn.csv   # Customer churn dataset
+│   ├── tips.csv          # Restaurant tips dataset (from Week 5)
+│   └── sample_sales.csv  # Generated sample sales data
 ├── requirements.txt      # Project dependencies
 ├── main.py              # Main entry point
 └── README.md            # This file
@@ -973,6 +982,226 @@ np.percentile()          # Calculate quartiles
 
 ---
 
+## 📊 Week 6 Seminar
+
+The **Week 6 Seminar** folder contains exercises focused on **Pandas fundamentals** for data manipulation and analysis.
+
+### Introduction: Pandas Basics Lecture
+
+**File**: `Week 6 Seminar/introduction_week_6_pandas.py`
+
+This comprehensive introduction covers 12 essential Pandas topics converted from the lecture notebook:
+
+**Topics Covered:**
+1. **Create Pandas Series** - One-dimensional labeled arrays with custom indices
+2. **Create DataFrame** - Multiple methods: dictionaries, lists, NumPy arrays, Series
+3. **Create DataFrame from Files** - CSV reading with various parameters
+4. **Conversion between DataFrame and ndarray** - Bidirectional conversion
+5. **Element-wise Operations** - Broadcasting and vectorized operations
+6. **Column Selection, Addition and Deletion** - DataFrame structure manipulation
+7. **Row Selection** - Using `.loc[]`, `.iloc[]`, and boolean indexing
+8. **Add and Delete Rows** - Using `pd.concat()` and `.drop()` methods
+9. **Important DataFrame Attributes** - `.index`, `.columns`, `.shape`, etc.
+10. **Scalar Operations** - Arithmetic with scalars, lists, and Series
+11. **Data Processing - Explore Dataset** - `.info()`, `.describe()`, `.head()`, `.tail()`
+12. **Exploration via Visualization** - Histograms, distributions with matplotlib/seaborn
+
+**Key Concepts:**
+- Series vs DataFrame differences
+- Index alignment and matching
+- NaN handling in mismatched data
+- Row vs column operations (axis parameter)
+- `.loc[]` (label-based) vs `.iloc[]` (position-based) indexing
+- Boolean masking for filtering
+- GroupBy operations for aggregation
+
+**Visualizations Generated:**
+- `tips_histogram_all.png` - All columns histograms
+- `tips_histogram_total_bill.png` - Single column histogram
+- `tips_histogram_by_sex.png` - Histogram grouped by category
+- `tips_catplot.png` - Category count plot with Seaborn
+- `tips_displot.png` - Distribution plot
+- `tips_pairplot.png` - Pairwise relationships
+- `tips_boxplot.png` - Box plot by category
+
+**Example Usage**:
+```bash
+cd "Week 6 Seminar"
+python introduction_week_6_pandas.py
+```
+
+**Requirements**: Pandas, NumPy, Matplotlib, Seaborn, openpyxl (for Excel files)
+
+---
+
+### Exercise 1: House Pricing Case Study
+
+**File**: `Week 6 Seminar/exercise_1_case_study_house_pricing.py`
+
+This case study uses real house sales data from Ames, Iowa (Kaggle dataset) to practice essential Pandas operations.
+
+**Dataset**: `house_price.csv` / `house_price.xlsx` (1,460 houses × 28 features)
+- **Index**: House ID (101-1560)
+- **Features**: Neighborhood, Condition, Sale Price, Year Built, Quality, etc.
+- **Target**: SalePrice (ranging from $34,900 to $755,000)
+
+#### Task 1: Import CSV with Custom Index
+```python
+# Read CSV file with 'Id' column as row index
+df_house = pd.read_csv('house_price.csv', index_col='Id')
+```
+
+**Concepts**: 
+- `pd.read_csv()` function
+- `index_col` parameter for custom indexing
+- DataFrame inspection with `.shape`, `.info()`, `.head()`
+
+**Output**: DataFrame with 1,460 rows × 28 columns
+
+---
+
+#### Task 2: Import Excel File
+```python
+# Read Excel file (requires openpyxl library)
+df_house_excel = pd.read_excel('house_price.xlsx', index_col='Id')
+```
+
+**Concepts**:
+- `pd.read_excel()` function
+- Installing dependencies (`pip install openpyxl`)
+- Comparing DataFrames with `.equals()`
+- Error handling with try-except blocks
+
+**Output**: Identical DataFrame from Excel format
+
+---
+
+#### Task 3: Create Series from Column
+```python
+# Extract single column as Series
+price = df_house['SalePrice']
+```
+
+**Concepts**:
+- Series extraction from DataFrame
+- Series attributes: `.name`, `.dtype`, `len()`
+- Statistical methods: `.mean()`, `.median()`, `.min()`, `.max()`, `.std()`
+- Comprehensive statistics with `.describe()`
+
+**Results**:
+- Mean price: $180,921.20
+- Median price: $163,000.00
+- Price range: $34,900 - $755,000
+- Standard deviation: $79,442.50
+
+---
+
+#### Task 4: Create DataFrame from Multiple Columns
+```python
+# Select multiple columns with double bracket notation
+df_location = df_house[['Neighborhood', 'Condition1']]
+```
+
+**Concepts**:
+- Multi-column selection with `[['col1', 'col2']]`
+- Counting unique values with `.nunique()`
+- Value frequency with `.value_counts()`
+- DataFrame vs Series return types
+
+**Results**:
+- 25 unique neighborhoods
+- 9 unique proximity conditions
+- Most common: NAmes (225 houses), Norm condition (1,260 houses)
+
+---
+
+#### Additional Analysis: GroupBy Operations
+
+**Average Price by Neighborhood:**
+```python
+df_location_price.groupby('Neighborhood')['SalePrice'].mean()
+```
+
+**Top 3 Most Expensive Neighborhoods:**
+1. **NoRidge**: $335,295 (North Ridge)
+2. **NridgHt**: $316,271 (Northridge Heights)
+3. **StoneBr**: $310,499 (Stone Brook)
+
+**Average Price by Proximity Condition:**
+```python
+df_location_price.groupby('Condition1')['SalePrice'].mean()
+```
+
+**Best Conditions:**
+1. **PosA**: $225,875 (Adjacent to positive feature)
+2. **PosN**: $215,184 (Near positive feature)
+3. **RRNn**: $212,400 (Near north-south railroad)
+
+---
+
+#### Concepts Demonstrated:
+- **Data Import**: CSV and Excel file reading
+- **Index Management**: Custom row indices
+- **Series Operations**: Statistical analysis on single columns
+- **DataFrame Subsetting**: Selecting specific columns
+- **Data Exploration**: Understanding data structure and content
+- **GroupBy Aggregation**: Computing statistics by category
+- **Error Handling**: Managing missing dependencies
+
+#### Learning Outcomes:
+✅ Import data from CSV and Excel files with custom indices  
+✅ Extract Series from DataFrame columns  
+✅ Create new DataFrames by selecting columns  
+✅ Perform statistical analysis on numerical data  
+✅ Use GroupBy for categorical aggregation  
+✅ Compare and validate data from different sources  
+✅ Handle missing dependencies gracefully  
+✅ Interpret real-world housing market data  
+
+#### Key Functions Used:
+```python
+pd.read_csv(file, index_col)    # Read CSV with custom index
+pd.read_excel(file, index_col)  # Read Excel file
+df['column']                     # Extract single column (Series)
+df[['col1', 'col2']]            # Extract multiple columns (DataFrame)
+df.shape                         # Get dimensions (rows, cols)
+df.info()                        # Display structure and types
+df.head()                        # Show first N rows
+series.describe()                # Statistical summary
+series.mean() / median() / std() # Specific statistics
+df.nunique()                     # Count unique values
+df.value_counts()                # Frequency distribution
+df.groupby('col')['col2'].mean() # Group and aggregate
+df.equals(other_df)              # Compare DataFrames
+```
+
+#### Data Insights:
+- **Price Distribution**: Right-skewed (mean > median indicates high-end outliers)
+- **Location Impact**: Neighborhood affects price by up to 2.7x (NoRidge vs cheapest)
+- **Condition Effect**: Positive features (PosA, PosN) add ~$40k premium
+- **Data Quality**: No missing values in Neighborhood/Condition1 columns
+- **Market Segmentation**: Clear price tiers by neighborhood
+
+#### Practical Applications:
+- Real estate market analysis and pricing models
+- Location-based property valuation
+- Feature importance for price prediction
+- Data cleaning and preparation workflows
+- Exploratory data analysis (EDA) techniques
+
+#### Files in Week 6 Seminar:
+- `introduction_week_6_pandas.py` - Comprehensive Pandas basics lecture
+- `exercise_1_case_study_house_pricing.py` - House pricing case study with detailed comments
+- `Lecture_Week_6_Pandas.ipynb` - Original Jupyter notebook (source material)
+- `data source/house_price.csv` - House sales dataset (CSV format, 1,460 records)
+- `data source/house_price.xlsx` - House sales dataset (Excel format)
+- `data source/customer_churn.csv` - Customer churn dataset
+- `tips.csv` - Restaurant tips dataset (244 records, from Week 5)
+- `sample_sales.csv` - Generated sample sales data
+- Visualization outputs: 7 PNG files (histograms, plots, etc.)
+
+---
+
 
 ## ✨ Features
 
@@ -1050,6 +1279,14 @@ jupyter notebook
 3. **Slice**: Extract subarrays using advanced indexing
 4. **Filter**: Apply boolean masking for conditional operations
 5. **Modify**: Perform efficient in-place transformations
+
+### Week 6: Pandas Data Manipulation
+1. **Import Data**: Read CSV/Excel files with custom indices
+2. **Explore**: Use `.info()`, `.describe()`, `.head()` for data profiling
+3. **Extract**: Create Series and subset DataFrames
+4. **Aggregate**: GroupBy operations for categorical analysis
+5. **Visualize**: Generate histograms, distributions, and statistical plots
+6. **Analyze**: Compute statistics and identify patterns in real-world data
 
 ### General Data Analysis Pipeline
 1. **Load Data**: Read CSV/Excel files
