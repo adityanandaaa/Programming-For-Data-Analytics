@@ -55,12 +55,10 @@ Programming_for_Data_Analytics/
 ├── Week 6 Seminar/       # Week 6 seminar exercises (Pandas fundamentals)
 │   ├── introduction_week_6_pandas.py  # Pandas basics lecture (from notebook)
 │   ├── exercise_1_case_study_house_pricing.py  # House pricing case study
-│   ├── data source/      # Datasets for Week 6
-│   │   ├── house_price.csv      # House sales data (CSV format)
-│   │   ├── house_price.xlsx     # House sales data (Excel format)
-│   │   └── customer_churn.csv   # Customer churn dataset
-│   ├── tips.csv          # Restaurant tips dataset (from Week 5)
-│   └── sample_sales.csv  # Generated sample sales data
+│   └── data source/      # Datasets for Week 6
+│       ├── house_price.csv      # House sales data (CSV format, 1,460 records)
+│       ├── house_price.xlsx     # House sales data (Excel format)
+│       └── customer_churn.csv   # Customer churn dataset
 ├── requirements.txt      # Project dependencies
 ├── main.py              # Main entry point
 └── README.md            # This file
@@ -1190,15 +1188,13 @@ df.equals(other_df)              # Compare DataFrames
 - Exploratory data analysis (EDA) techniques
 
 #### Files in Week 6 Seminar:
-- `introduction_week_6_pandas.py` - Comprehensive Pandas basics lecture
-- `exercise_1_case_study_house_pricing.py` - House pricing case study with detailed comments
-- `Lecture_Week_6_Pandas.ipynb` - Original Jupyter notebook (source material)
+- `introduction_week_6_pandas.py` - Comprehensive Pandas basics lecture (12 topics, 615 lines)
+- `exercise_1_case_study_house_pricing.py` - House pricing case study with detailed comments (234 lines)
 - `data source/house_price.csv` - House sales dataset (CSV format, 1,460 records)
-- `data source/house_price.xlsx` - House sales dataset (Excel format)
+- `data source/house_price.xlsx` - House sales dataset (Excel format, 1,460 records)
 - `data source/customer_churn.csv` - Customer churn dataset
-- `tips.csv` - Restaurant tips dataset (244 records, from Week 5)
-- `sample_sales.csv` - Generated sample sales data
-- Visualization outputs: 7 PNG files (histograms, plots, etc.)
+
+**Note**: Visualization outputs (PNG files) and sample sales data are generated when running the introduction file.
 
 ---
 
