@@ -214,18 +214,15 @@ print("\n--- Pandas can read from csv, Excel, JSON, SQL, etc. Focus: CSV files -
 
 # Get script directory
 script_dir = os.path.dirname(os.path.abspath(__file__))
+data_dir = os.path.join(script_dir, 'data source')
+output_dir = os.path.join(script_dir, 'visualizations')
+os.makedirs(output_dir, exist_ok=True)
 
 # Check if tips.csv exists
-tips_csv_path = os.path.join(script_dir, 'tips.csv')
+tips_csv_path = os.path.join(data_dir, 'tips.csv')
 if not os.path.exists(tips_csv_path):
-    # Try looking in parent directory's Week 5 Seminar folder
-    parent_dir = os.path.dirname(script_dir)
-    tips_csv_path_alt = os.path.join(parent_dir, 'Week 5 Seminar', 'tips.csv')
-    if os.path.exists(tips_csv_path_alt):
-        tips_csv_path = tips_csv_path_alt
-    else:
-        print(f"\nWarning: tips.csv not found. Skipping CSV examples.")
-        tips_csv_path = None
+    print(f"\nWarning: tips.csv not found in {data_dir}. Skipping CSV examples.")
+    tips_csv_path = None
 
 if tips_csv_path:
     print("\n--- Use read_csv() function. Filename is the only required argument ---")
@@ -546,7 +543,7 @@ if tips_csv_path:
         df_tips.hist()
         plt.suptitle('All Columns Histogram')
         plt.tight_layout()
-        plt.savefig(os.path.join(script_dir, 'tips_histogram_all.png'))
+        plt.savefig(os.path.join(output_dir, 'tips_histogram_all.png'))
         plt.close()
         print("Saved: tips_histogram_all.png")
         
@@ -554,7 +551,7 @@ if tips_csv_path:
         df_tips.hist('total_bill')
         plt.title('Total Bill Histogram')
         plt.tight_layout()
-        plt.savefig(os.path.join(script_dir, 'tips_histogram_total_bill.png'))
+        plt.savefig(os.path.join(output_dir, 'tips_histogram_total_bill.png'))
         plt.close()
         print("Saved: tips_histogram_total_bill.png")
         
@@ -562,7 +559,7 @@ if tips_csv_path:
         df_tips.hist('total_bill', by='sex')
         plt.suptitle('Total Bill by Sex')
         plt.tight_layout()
-        plt.savefig(os.path.join(script_dir, 'tips_histogram_by_sex.png'))
+        plt.savefig(os.path.join(output_dir, 'tips_histogram_by_sex.png'))
         plt.close()
         print("Saved: tips_histogram_by_sex.png")
         
@@ -574,7 +571,7 @@ if tips_csv_path:
             sns.catplot(x='sex', kind='count', hue='day', data=df_tips)
             plt.title('Count by Sex and Day')
             plt.tight_layout()
-            plt.savefig(os.path.join(script_dir, 'tips_catplot.png'))
+            plt.savefig(os.path.join(output_dir, 'tips_catplot.png'))
             plt.close()
             print("Saved: tips_catplot.png")
             
@@ -582,7 +579,7 @@ if tips_csv_path:
             sns.displot(df_tips['total_bill'])
             plt.title('Total Bill Distribution')
             plt.tight_layout()
-            plt.savefig(os.path.join(script_dir, 'tips_displot.png'))
+            plt.savefig(os.path.join(output_dir, 'tips_displot.png'))
             plt.close()
             print("Saved: tips_displot.png")
             
@@ -590,7 +587,7 @@ if tips_csv_path:
             sns.pairplot(df_tips, hue='sex')
             plt.suptitle('Pairplot by Sex', y=1.02)
             plt.tight_layout()
-            plt.savefig(os.path.join(script_dir, 'tips_pairplot.png'))
+            plt.savefig(os.path.join(output_dir, 'tips_pairplot.png'))
             plt.close()
             print("Saved: tips_pairplot.png")
             
@@ -598,7 +595,7 @@ if tips_csv_path:
             sns.catplot(x='day', y='tip', kind='box', data=df_tips)
             plt.title('Tip by Day (Box Plot)')
             plt.tight_layout()
-            plt.savefig(os.path.join(script_dir, 'tips_boxplot.png'))
+            plt.savefig(os.path.join(output_dir, 'tips_boxplot.png'))
             plt.close()
             print("Saved: tips_boxplot.png")
             

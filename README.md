@@ -54,14 +54,20 @@ Programming_for_Data_Analytics/
 │   └── tips.npy          # Binary NumPy format example
 ├── Week 6 Seminar/       # Week 6 seminar exercises (Pandas fundamentals)
 │   ├── introduction_week_6_pandas.py  # Pandas basics lecture (from notebook)
-│   ├── exercise_1_case_study_1_house_pricing.py  # Case Study 1: House pricing basics
-│   ├── exercise_2_case_study_1_house_pricing.py  # Case Study 1: Advanced indexing
-│   ├── exercise_3_case_study_1_house_pricing.py  # Case Study 1: Exploratory data analysis
-│   ├── exercise_1_case_study_2_customer_churn.py  # Case Study 2: Customer churn EDA
+│   ├── case_study_1_house_pricing/ # Case Study 1: House Pricing EDA
+│   │   ├── exercise_1_case_study_1_house_pricing.py
+│   │   ├── exercise_2_case_study_1_house_pricing.py
+│   │   ├── exercise_3_case_study_1_house_pricing.py
+│   │   └── visualizations/
+│   │       ├── ... (8 .png files)
+│   ├── case_study_2_customer_churn/ # Case Study 2: Customer Churn EDA
+│   │   ├── exercise_1_case_study_2_customer_churn.py
+│   │   └── visualizations/
+│   │       ├── ... (6 .png files)
 │   └── data source/      # Datasets for Week 6
-│       ├── house_price.csv      # House sales data (CSV format, 1,460 records)
-│       ├── house_price.xlsx     # House sales data (Excel format)
-│       └── customer_churn.csv   # Customer churn dataset (7,043 records)
+│       ├── house_price.csv
+│       ├── house_price.xlsx
+│       └── customer_churn.csv
 ├── requirements.txt      # Project dependencies
 ├── main.py              # Main entry point
 └── README.md            # This file
@@ -818,20 +824,6 @@ meta_std_clean = np.std(clean_data[:, 0])
 ✅ Quantify impact of data quality on statistics  
 ✅ Generate professional-quality data analysis reports
 
-#### Key Functions and Techniques:
-```python
-sns.histplot()           # Enhanced histograms with KDE
-plt.boxplot()            # Box plot visualization
-plt.violinplot()         # Violin plot for distribution
-plt.scatter()            # Scatter plot for relationships
-plt.hexbin()             # 2D density plot
-np.polyfit()             # Fit polynomial (regression line)
-np.poly1d()              # Create polynomial function
-np.corrcoef()            # Calculate correlation coefficient
-np.nanmean() / np.nanstd() # Statistics ignoring NaN
-np.isnan().any(axis=1)   # Boolean mask for rows with NaN
-```
-
 #### Data Insights from Exercise:
 - **Meta Score**: Mean = 90.35, Std = 2.40 (tight distribution)
 - **User Review**: Mean = 8.12, Std = 0.86 (after cleaning)
@@ -978,7 +970,7 @@ np.percentile()          # Calculate quartiles
 - `exercise_3_week_5.py` - Data visualization and statistical analysis
 - `exercise_4_week_5.py` - Data filtering and weighted score calculation
 - `tips.csv` - Sample dataset (244 restaurant tips)
-- `all_games.csv` - Video games dataset (18,802 records with metadata)
+- `all_games.csv` - Video games dataset (18,802 records)
 - `tips.npy` - Binary NumPy format example
 
 ---
@@ -1037,7 +1029,7 @@ python introduction_week_6_pandas.py
 
 ### Exercise 1: House Pricing Case Study
 
-**File**: `Week 6 Seminar/exercise_1_case_study_house_pricing.py`
+**File**: `Week 6 Seminar/case_study_1_house_pricing/exercise_1_case_study_1_house_pricing.py`
 
 This case study uses real house sales data from Ames, Iowa (Kaggle dataset) to practice essential Pandas operations.
 
@@ -1176,40 +1168,11 @@ df.groupby('col')['col2'].mean() # Group and aggregate
 df.equals(other_df)              # Compare DataFrames
 ```
 
-#### Data Insights:
-- **Price Distribution**: Right-skewed (mean > median indicates high-end outliers)
-- **Location Impact**: Neighborhood affects price by up to 2.7x (NoRidge vs cheapest)
-- **Condition Effect**: Positive features (PosA, PosN) add ~$40k premium
-- **Data Quality**: No missing values in Neighborhood/Condition1 columns
-- **Market Segmentation**: Clear price tiers by neighborhood
-
-#### Practical Applications:
-- Real estate market analysis and pricing models
-- Location-based property valuation
-- Feature importance for price prediction
-- Data cleaning and preparation workflows
-- Exploratory data analysis (EDA) techniques
-
-#### Files in Week 6 Seminar:
-- `introduction_week_6_pandas.py` - Comprehensive Pandas basics lecture (12 topics, 615 lines)
-- **Case Study 1: House Pricing Analysis**
-  - `exercise_1_case_study_1_house_pricing.py` - Data import and exploration (234 lines)
-  - `exercise_2_case_study_1_house_pricing.py` - Advanced indexing and filtering (309 lines)
-  - `exercise_3_case_study_1_house_pricing.py` - Exploratory data analysis (593 lines)
-- **Case Study 2: Customer Churn Analysis**
-  - `exercise_1_case_study_2_customer_churn.py` - Complete EDA with data quality audit (685 lines)
-- **Datasets**
-  - `data source/house_price.csv` - House sales dataset (CSV format, 1,460 records)
-  - `data source/house_price.xlsx` - House sales dataset (Excel format, 1,460 records)
-  - `data source/customer_churn.csv` - Telco customer churn dataset (7,043 records, 21 columns)
-
-**Note**: Visualization outputs (PNG files) and sample sales data are generated when running the exercise files.
-
 ---
 
 ### Exercise 2: Case Study 1 - Advanced DataFrame Indexing and Boolean Filtering
 
-**File**: `Week 6 Seminar/exercise_2_case_study_1_house_pricing.py` (309 lines)
+**File**: `Week 6 Seminar/case_study_1_house_pricing/exercise_2_case_study_1_house_pricing.py` (309 lines)
 **Dataset**: House Prices (Ames, Iowa)
 
 This exercise focuses on advanced DataFrame operations including label-based indexing (`.loc[]`), position-based indexing (`.iloc[]`), and boolean masking for complex filtering operations.
@@ -1359,6 +1322,7 @@ df_deal = df_house.loc[mask_deal]
 - **Logical Operators**: `&` (AND), `|` (OR), `~` (NOT)
 - **Data Subsetting**: Creating new DataFrames from filtered data
 - **Statistical Comparison**: Analyzing filtered vs full datasets
+- **Identifying Data Patterns**: Finding high-risk segments
 
 #### Learning Outcomes:
 ✅ Master `.loc[]` for label-based row/column selection  
@@ -1384,19 +1348,6 @@ df.equals(other_df)               # Compare DataFrames
 series.value_counts()             # Frequency counts
 ```
 
-#### Indexing Comparison:
-
-| Method | Type | Syntax | Use Case |
-|--------|------|--------|----------|
-| `.loc[]` | Label-based | `df.loc[222, 'SalePrice']` | Select by index/column names |
-| `.iloc[]` | Position-based | `df.iloc[0:100, 0:5]` | Select by row/column positions |
-| `.head()` | Convenience | `df.head(100)` | Quick view of first N rows |
-| Boolean | Conditional | `df[df['col'] > value]` | Filter by conditions |
-
-**Important Distinctions**:
-- `.loc[]` end is INCLUDED: `df.loc[222:333]` includes both 222 and 333
-- `.iloc[]` end is EXCLUDED: `df.iloc[0:100]` includes rows 0-99 (standard Python)
-
 #### Data Insights:
 - **Quality Distribution**: Only 15.7% of houses have OverallQual >= 8
 - **Price Premium**: High quality adds 68.6% to average price
@@ -1417,7 +1368,7 @@ series.value_counts()             # Frequency counts
 
 ### Exercise 3: Case Study 1 - Exploratory Data Analysis (EDA)
 
-**File**: `Week 6 Seminar/exercise_3_case_study_1_house_pricing.py` (593 lines)
+**File**: `Week 6 Seminar/case_study_1_house_pricing/exercise_3_case_study_1_house_pricing.py` (593 lines)
 **Dataset**: House Prices (Ames, Iowa)
 
 This exercise demonstrates comprehensive exploratory data analysis techniques including missing value identification, distribution analysis, correlation studies, and categorical feature exploration.
@@ -1598,7 +1549,7 @@ df.describe()                     # Statistical summary
 df[col].skew() / kurtosis()      # Distribution shape metrics
 df.hist() / df.boxplot()         # Distribution visualizations
 df.corr()                         # Correlation matrix
-sns.heatmap()                     # Correlation visualization
+sns.heatmap()                      # Correlation visualization
 df.groupby(col).agg()            # Categorical aggregation
 plt.scatter()                     # Relationship visualization
 np.polyfit() / np.poly1d()       # Trend line fitting
@@ -1648,20 +1599,11 @@ df.select_dtypes()               # Filter columns by type
 6. **Normalization**: Standardize numeric features for modeling
 7. **Train-Test Split**: Prepare data for machine learning pipeline
 
-#### Practical Applications:
-- Pre-modeling exploratory data analysis
-- Data quality assessment and reporting
-- Feature selection for machine learning
-- Business intelligence dashboards
-- Real estate market analysis
-- Academic research data profiling
-- Stakeholder presentation preparation
-
 ---
 
 ### Case Study 2: Customer Churn Analysis - Complete EDA
 
-**File**: `Week 6 Seminar/exercise_1_case_study_2_customer_churn.py` (685 lines)
+**File**: `Week 6 Seminar/case_study_2_customer_churn/exercise_1_case_study_2_customer_churn.py` (685 lines)
 **Dataset**: Telco Customer Churn (Kaggle)  
 **Records**: 7,043 customers × 21 columns
 
@@ -1950,184 +1892,3 @@ Solution:
 ```
 
 ---
-
-#### Concepts Demonstrated:
-
-- **Data Quality Auditing**: Systematic data type verification
-- **Hidden Issues Detection**: Finding non-obvious problems (empty strings)
-- **Data Cleaning**: Type conversion with `pd.to_numeric(errors='coerce')`
-- **Imputation Strategies**: Logic-based missing value filling
-- **Target Variable Analysis**: Class imbalance assessment
-- **Segmentation Analysis**: Churn rates across multiple dimensions
-- **Correlation Studies**: Numeric feature relationships with target
-- **Cross-Tabulation**: `pd.crosstab()` for categorical analysis
-- **Comparative Statistics**: Group-based statistical comparisons
-- **Business Intelligence**: Translating statistics to actionable recommendations
-
-#### Learning Outcomes:
-✅ Conduct comprehensive data quality audits  
-✅ Identify and resolve data type issues  
-✅ Handle hidden missing values (empty strings, whitespace)  
-✅ Implement logic-based imputation strategies  
-✅ Analyze target variable distributions  
-✅ Calculate and interpret churn rates across segments  
-✅ Compare statistical distributions between groups  
-✅ Create business-focused visualizations  
-✅ Extract actionable insights from exploratory analysis  
-✅ Formulate data-driven business recommendations  
-✅ Present findings in executive summary format  
-
-#### Key Functions Used:
-```python
-pd.read_csv()                      # Import dataset
-df.info()                          # Data structure inspection
-df.duplicated().sum()              # Duplicate detection
-df.select_dtypes()                 # Filter columns by type
-pd.to_numeric(errors='coerce')     # Safe numeric conversion
-df.isnull().sum()                  # Missing value counts
-df.value_counts(normalize=True)    # Frequency distributions
-df.groupby().apply()               # Custom aggregations
-pd.crosstab(normalize='index')     # Cross-tabulation analysis
-df.corr()                          # Correlation matrix
-df.boxplot(by='column')            # Grouped box plots
-sns.heatmap()                      # Correlation visualization
-plt.hist() with overlays           # Comparative histograms
-```
-
-#### Data Insights Summary Table:
-
-| Category | Metric | Value | Interpretation |
-|----------|--------|-------|----------------|
-| **Overall** | Churn Rate | 26.54% | Significant retention challenge |
-| **Contract** | Month-to-month | 42.71% | Highest risk segment |
-| **Contract** | Two-year | 2.83% | Most stable segment |
-| **Payment** | Electronic check | 45.29% | Review payment UX |
-| **Payment** | Auto-payment | ~16% | Encourage adoption |
-| **Tenure** | Churned avg | 18 months | Early intervention needed |
-| **Tenure** | Retained avg | 37.6 months | Loyalty pays off |
-| **Demographics** | Senior citizen | 41.68% | Targeted support required |
-| **Service** | Fiber optic | 41.89% | Quality/value issue? |
-| **Service** | No OnlineSecurity | 41.84% | Bundle opportunity |
-
-#### Practical Applications:
-- Customer retention strategy development
-- Churn prediction model preparation
-- Marketing campaign segmentation
-- Service pricing optimization
-- Customer lifetime value analysis
-- Product bundling strategy
-- Risk segmentation for targeted interventions
-- Executive dashboard development
-- KPI tracking and monitoring
-
----
-
-
-## ✨ Features
-
-- **📈 Data Analysis**: Pandas-based data manipulation and analysis
-- **📊 Visualization**: Matplotlib and Seaborn for charts and plots
-- **📓 Jupyter Notebooks**: Interactive data exploration
-- **🧪 Testing**: Unit tests with pytest
-- **📝 Documentation**: Comprehensive code documentation
-- **🔄 Data Pipeline**: Extract, Transform, Load (ETL) workflows
-
-## 🛠️ Technologies
-
-- **Python 3.9+**
-- **Pandas**: Data manipulation and analysis
-- **NumPy**: Numerical computing and array operations
-- **Matplotlib**: Data visualization and plotting
-- **Seaborn**: Statistical visualization
-- **SciPy**: Scientific computing and statistics
-- **Jupyter**: Interactive notebooks
-- **pytest**: Testing framework
-- **BeautifulSoup4**: Web scraping
-- **requests**: HTTP library for API calls
-
-## 📋 Requirements
-
-See `requirements.txt` for complete dependencies.
-
-```
-pandas>=2.0.0
-numpy>=1.20.0
-matplotlib>=3.5.0
-seaborn>=0.12.0
-scipy>=1.13.0
-jupyter>=1.0.0
-pytest>=7.0.0
-beautifulsoup4>=4.12.0
-requests>=2.31.0
-```
-
-## 🏃 Running the Project
-
-### Basic Usage
-```python
-python main.py
-```
-
-### Run Tests
-```python
-pytest tests/
-```
-
-### Open Jupyter Notebooks
-```bash
-jupyter notebook
-```
-
-## 📊 Example Workflows
-
-### Week 3: API Integration & Web Scraping
-1. **Fetch Data**: Use REST APIs or web scraping
-2. **Parse Responses**: Extract structured data from JSON/HTML
-3. **Paginate**: Handle multiple pages of results
-4. **Save Results**: Write data to text files
-
-### Week 4: Data Visualization & EDA
-1. **Load Data**: Read datasets using Seaborn/Pandas
-2. **Explore**: Summary statistics and distributions
-3. **Visualize**: Create histograms, scatter plots, box plots, heatmaps
-4. **Analyze Relationships**: Correlation analysis and feature relationships
-5. **Generate Insights**: Extract actionable preprocessing recommendations
-
-### Week 5: NumPy Operations
-1. **Create Arrays**: Generate random data or load from CSV
-2. **Reshape**: Transform array dimensions
-3. **Slice**: Extract subarrays using advanced indexing
-4. **Filter**: Apply boolean masking for conditional operations
-5. **Modify**: Perform efficient in-place transformations
-
-### Week 6: Pandas Data Manipulation
-1. **Import Data**: Read CSV/Excel files with custom indices
-2. **Explore**: Use `.info()`, `.describe()`, `.head()` for data profiling
-3. **Extract**: Create Series and subset DataFrames
-4. **Aggregate**: GroupBy operations for categorical analysis
-5. **Visualize**: Generate histograms, distributions, and statistical plots
-6. **Analyze**: Compute statistics and identify patterns in real-world data
-
-### General Data Analysis Pipeline
-1. **Load Data**: Read CSV/Excel files
-2. **Explore**: Summary statistics and data profiling
-3. **Clean**: Handle missing values and outliers
-4. **Analyze**: Statistical analysis and insights
-5. **Visualize**: Create charts and plots
-6. **Report**: Generate analysis reports
-
-## 🎯 Project Goals
-
-- Learn data analysis workflows
-- Practice data visualization techniques
-- Develop ETL pipelines
-- Create reproducible analysis
-- Generate insights from data
-
-## 📝 License
-
-This project is for educational purposes.
-
-## 🤝 Contributing
-
-Feel free to extend this project with new analysis modules and visualizations.

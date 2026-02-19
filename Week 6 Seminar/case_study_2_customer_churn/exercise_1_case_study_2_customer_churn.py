@@ -33,8 +33,11 @@ plt.rcParams['font.size'] = 10  # Default font size
 
 # Get the absolute path of the current script file
 script_dir = os.path.dirname(os.path.abspath(__file__))
-# Construct the path to the 'data source' folder
-data_dir = os.path.join(script_dir, 'data source')
+# Construct the path to the 'data source' folder, which is now one level up
+data_dir = os.path.join(script_dir, '..', 'data source')
+# Define the output directory for visualizations
+output_dir = os.path.join(script_dir, 'visualizations')
+os.makedirs(output_dir, exist_ok=True) # Ensure the directory exists
 
 print("="*80)
 print("CASE STUDY 2: CUSTOMER CHURN ANALYSIS")
@@ -305,8 +308,8 @@ for i, v in enumerate(churn_counts):
              ha='center', va='bottom', fontweight='bold')
 plt.grid(axis='y', alpha=0.3)
 plt.tight_layout()
-plt.savefig('exercise_cs2_churn_distribution.png', dpi=300, bbox_inches='tight')
-print("\n✓ Saved: exercise_cs2_churn_distribution.png")
+plt.savefig(os.path.join(output_dir, 'exercise_cs2_churn_distribution.png'), dpi=300, bbox_inches='tight')
+print(f"\n✓ Saved: {os.path.join(output_dir, 'exercise_cs2_churn_distribution.png')}")
 plt.close()
 
 # =============================================================================
@@ -352,8 +355,8 @@ for idx, col in enumerate(demographic_cols):
     axes[idx].grid(axis='y', alpha=0.3)
 
 plt.tight_layout()
-plt.savefig('exercise_cs2_demographics_churn.png', dpi=300, bbox_inches='tight')
-print("\n✓ Saved: exercise_cs2_demographics_churn.png")
+plt.savefig(os.path.join(output_dir, 'exercise_cs2_demographics_churn.png'), dpi=300, bbox_inches='tight')
+print(f"\n✓ Saved: {os.path.join(output_dir, 'exercise_cs2_demographics_churn.png')}")
 plt.close()
 
 # =============================================================================
@@ -441,8 +444,8 @@ axes[1].tick_params(axis='x', rotation=45)
 axes[1].grid(axis='y', alpha=0.3)
 
 plt.tight_layout()
-plt.savefig('exercise_cs2_contract_payment_churn.png', dpi=300, bbox_inches='tight')
-print("\n✓ Saved: exercise_cs2_contract_payment_churn.png")
+plt.savefig(os.path.join(output_dir, 'exercise_cs2_contract_payment_churn.png'), dpi=300, bbox_inches='tight')
+print(f"\n✓ Saved: {os.path.join(output_dir, 'exercise_cs2_contract_payment_churn.png')}")
 plt.close()
 
 # =============================================================================
@@ -487,8 +490,8 @@ axes[1].get_figure().suptitle('')
 axes[1].grid(axis='y', alpha=0.3)
 
 plt.tight_layout()
-plt.savefig('exercise_cs2_tenure_analysis.png', dpi=300, bbox_inches='tight')
-print("\n✓ Saved: exercise_cs2_tenure_analysis.png")
+plt.savefig(os.path.join(output_dir, 'exercise_cs2_tenure_analysis.png'), dpi=300, bbox_inches='tight')
+print(f"\n✓ Saved: {os.path.join(output_dir, 'exercise_cs2_tenure_analysis.png')}")
 plt.close()
 
 # =============================================================================
@@ -558,8 +561,8 @@ axes[1, 1].get_figure().suptitle('')
 axes[1, 1].grid(axis='y', alpha=0.3)
 
 plt.tight_layout()
-plt.savefig('exercise_cs2_charges_analysis.png', dpi=300, bbox_inches='tight')
-print("\n✓ Saved: exercise_cs2_charges_analysis.png")
+plt.savefig(os.path.join(output_dir, 'exercise_cs2_charges_analysis.png'), dpi=300, bbox_inches='tight')
+print(f"\n✓ Saved: {os.path.join(output_dir, 'exercise_cs2_charges_analysis.png')}")
 plt.close()
 
 # =============================================================================
@@ -591,8 +594,8 @@ sns.heatmap(correlation_matrix, annot=True, fmt='.3f', cmap='coolwarm',
             center=0, square=True, linewidths=1, cbar_kws={"shrink": 0.8})
 plt.title('Correlation Matrix - Numeric Features', fontsize=14, fontweight='bold')
 plt.tight_layout()
-plt.savefig('exercise_cs2_correlation_matrix.png', dpi=300, bbox_inches='tight')
-print("\n✓ Saved: exercise_cs2_correlation_matrix.png")
+plt.savefig(os.path.join(output_dir, 'exercise_cs2_correlation_matrix.png'), dpi=300, bbox_inches='tight')
+print(f"\n✓ Saved: {os.path.join(output_dir, 'exercise_cs2_correlation_matrix.png')}")
 plt.close()
 
 # =============================================================================

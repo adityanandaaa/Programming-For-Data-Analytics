@@ -35,8 +35,11 @@ plt.rcParams['figure.figsize'] = (12, 6)  # Default figure size
 
 # Get the absolute path of the current script file
 script_dir = os.path.dirname(os.path.abspath(__file__))
-# Construct the path to the 'data source' folder within the script directory
-data_dir = os.path.join(script_dir, 'data source')
+# Construct the path to the 'data source' folder, which is now one level up
+data_dir = os.path.join(script_dir, '..', 'data source')
+# Define the output directory for visualizations
+output_dir = os.path.join(script_dir, 'visualizations')
+os.makedirs(output_dir, exist_ok=True) # Ensure the directory exists
 
 print("="*80)
 print("CASE STUDY 1: HOUSE PRICING EXERCISE 3")
@@ -156,8 +159,8 @@ plt.xlabel('Number of Missing Values', fontsize=12)
 plt.ylabel('Column Name', fontsize=12)
 plt.title('Missing Values by Column', fontsize=14, fontweight='bold')
 plt.tight_layout()
-plt.savefig('exercise_3_missing_values.png', dpi=300, bbox_inches='tight')
-print("✓ Saved: exercise_3_missing_values.png")
+plt.savefig(os.path.join(output_dir, 'exercise_3_missing_values.png'), dpi=300, bbox_inches='tight')
+print(f"✓ Saved: {os.path.join(output_dir, 'exercise_3_missing_values.png')}")
 plt.close()
 
 # =============================================================================
@@ -250,8 +253,8 @@ for idx in range(len(numeric_cols), len(axes)):
     axes[idx].axis('off')
 
 plt.tight_layout()
-plt.savefig('exercise_3_numeric_distributions.png', dpi=300, bbox_inches='tight')
-print("✓ Saved: exercise_3_numeric_distributions.png")
+plt.savefig(os.path.join(output_dir, 'exercise_3_numeric_distributions.png'), dpi=300, bbox_inches='tight')
+print(f"✓ Saved: {os.path.join(output_dir, 'exercise_3_numeric_distributions.png')}")
 plt.close()
 
 # Create box plots to identify outliers
@@ -273,8 +276,8 @@ for idx in range(len(numeric_cols), len(axes)):
     axes[idx].axis('off')
 
 plt.tight_layout()
-plt.savefig('exercise_3_numeric_boxplots.png', dpi=300, bbox_inches='tight')
-print("✓ Saved: exercise_3_numeric_boxplots.png")
+plt.savefig(os.path.join(output_dir, 'exercise_3_numeric_boxplots.png'), dpi=300, bbox_inches='tight')
+print(f"✓ Saved: {os.path.join(output_dir, 'exercise_3_numeric_boxplots.png')}")
 plt.close()
 
 # =============================================================================
@@ -322,8 +325,8 @@ for idx, col in enumerate(categorical_cols):
     axes[idx].grid(axis='y', alpha=0.3)
 
 plt.tight_layout()
-plt.savefig('exercise_3_categorical_distributions.png', dpi=300, bbox_inches='tight')
-print("✓ Saved: exercise_3_categorical_distributions.png")
+plt.savefig(os.path.join(output_dir, 'exercise_3_categorical_distributions.png'), dpi=300, bbox_inches='tight')
+print(f"✓ Saved: {os.path.join(output_dir, 'exercise_3_categorical_distributions.png')}")
 plt.close()
 
 # =============================================================================
@@ -377,8 +380,8 @@ sns.heatmap(correlation_matrix, annot=True, fmt='.2f', cmap='coolwarm',
             center=0, square=True, linewidths=1, cbar_kws={"shrink": 0.8})
 plt.title('Correlation Matrix - Numeric Features', fontsize=14, fontweight='bold')
 plt.tight_layout()
-plt.savefig('exercise_3_correlation_heatmap.png', dpi=300, bbox_inches='tight')
-print("✓ Saved: exercise_3_correlation_heatmap.png")
+plt.savefig(os.path.join(output_dir, 'exercise_3_correlation_heatmap.png'), dpi=300, bbox_inches='tight')
+print(f"✓ Saved: {os.path.join(output_dir, 'exercise_3_correlation_heatmap.png')}")
 plt.close()
 
 # Create scatter plots for features vs SalePrice
@@ -414,8 +417,8 @@ for idx, col in enumerate(features_for_scatter):
     axes[idx].legend()
 
 plt.tight_layout()
-plt.savefig('exercise_3_scatter_saleprice.png', dpi=300, bbox_inches='tight')
-print("✓ Saved: exercise_3_scatter_saleprice.png")
+plt.savefig(os.path.join(output_dir, 'exercise_3_scatter_saleprice.png'), dpi=300, bbox_inches='tight')
+print(f"✓ Saved: {os.path.join(output_dir, 'exercise_3_scatter_saleprice.png')}")
 plt.close()
 
 # =============================================================================
@@ -455,8 +458,8 @@ for idx, col in enumerate(categorical_cols):
     axes[idx].get_figure().suptitle('')
 
 plt.tight_layout()
-plt.savefig('exercise_3_saleprice_by_categories.png', dpi=300, bbox_inches='tight')
-print("✓ Saved: exercise_3_saleprice_by_categories.png")
+plt.savefig(os.path.join(output_dir, 'exercise_3_saleprice_by_categories.png'), dpi=300, bbox_inches='tight')
+print(f"✓ Saved: {os.path.join(output_dir, 'exercise_3_saleprice_by_categories.png')}")
 plt.close()
 
 # Create bar plots showing average price by category
@@ -483,8 +486,8 @@ for idx, col in enumerate(categorical_cols):
     axes[idx].grid(axis='x', alpha=0.3)
 
 plt.tight_layout()
-plt.savefig('exercise_3_avg_price_by_categories.png', dpi=300, bbox_inches='tight')
-print("✓ Saved: exercise_3_avg_price_by_categories.png")
+plt.savefig(os.path.join(output_dir, 'exercise_3_avg_price_by_categories.png'), dpi=300, bbox_inches='tight')
+print(f"✓ Saved: {os.path.join(output_dir, 'exercise_3_avg_price_by_categories.png')}")
 plt.close()
 
 # =============================================================================
