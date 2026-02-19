@@ -2,6 +2,17 @@
 
 A comprehensive Python project for data analysis, visualization, and reporting using modern data science tools.
 
+## 📂 Project Highlights & Key Accomplishments
+
+- **Multi-Source Data Integration**: Developed robust workflows to ingest data from diverse sources including RESTful APIs (Open Library), web scraping (BeautifulSoup4), and structured file formats (CSV/Excel).
+- **Advanced Exploratory Data Analysis (EDA)**: Performed in-depth statistical profiling and visualization on real-world datasets (House Prices, Customer Churn, Penguins, etc.) to uncover non-obvious patterns and trends.
+- **Critical Data Quality Auditing**: Implemented systematic "Audit-Identify-Resolve" pipelines to detect hidden data issues like incorrect data types, whitespace strings, and systemic missingness.
+- **Actionable Business Intelligence**: Translated complex data findings into concrete business recommendations, such as customer retention strategies and real estate value assessment.
+- **High-Performance Numerical Computing**: Leveraged vectorized operations with NumPy for high-efficiency data manipulation, filtering, and weighted score calculations.
+- **Professional Visualization Design**: Crafted multi-panel statistical visualizations (Box plots, Heatmaps, Distplots) with Seaborn and Matplotlib to clearly communicate complex relationships.
+- **Robust Environment Management**: Established a professional development environment using Python virtual environments and clear dependency management (`requirements.txt`).
+- **Structured Project Architecture**: Organized the codebase into a clean, hierarchical structure with clear separation between data, scripts, and visualization outputs.
+
 ## 🚀 Quick Start
 
 ```bash
@@ -19,8 +30,8 @@ source .venv/bin/activate  # macOS/Linux
 # Install dependencies
 pip install -r requirements.txt
 
-# Run analysis examples
-python main.py
+# Run analysis examples (Example: Case Study 2)
+python "Week 6 Seminar/case_study_2_customer_churn/exercise_1_case_study_2_customer_churn.py"
 ```
 
 ## 📊 Project Structure
