@@ -54,7 +54,9 @@ Programming_for_Data_Analytics/
 │   └── tips.npy          # Binary NumPy format example
 ├── Week 6 Seminar/       # Week 6 seminar exercises (Pandas fundamentals)
 │   ├── introduction_week_6_pandas.py  # Pandas basics lecture (from notebook)
-│   ├── exercise_1_case_study_house_pricing.py  # House pricing case study
+│   ├── exercise_1_case_study_1_house_pricing.py  # Case Study 1: House pricing basics
+│   ├── exercise_2_case_study_1_house_pricing.py  # Case Study 1: Advanced indexing
+│   ├── exercise_3_case_study_1_house_pricing.py  # Case Study 1: Exploratory data analysis
 │   └── data source/      # Datasets for Week 6
 │       ├── house_price.csv      # House sales data (CSV format, 1,460 records)
 │       ├── house_price.xlsx     # House sales data (Excel format)
@@ -1189,12 +1191,466 @@ df.equals(other_df)              # Compare DataFrames
 
 #### Files in Week 6 Seminar:
 - `introduction_week_6_pandas.py` - Comprehensive Pandas basics lecture (12 topics, 615 lines)
-- `exercise_1_case_study_house_pricing.py` - House pricing case study with detailed comments (234 lines)
+- `exercise_1_case_study_1_house_pricing.py` - Case Study 1: Data import and exploration (234 lines)
+- `exercise_2_case_study_1_house_pricing.py` - Case Study 1: Advanced indexing and filtering (309 lines)
+- `exercise_3_case_study_1_house_pricing.py` - Case Study 1: Exploratory data analysis (593 lines)
 - `data source/house_price.csv` - House sales dataset (CSV format, 1,460 records)
 - `data source/house_price.xlsx` - House sales dataset (Excel format, 1,460 records)
 - `data source/customer_churn.csv` - Customer churn dataset
 
 **Note**: Visualization outputs (PNG files) and sample sales data are generated when running the introduction file.
+
+---
+
+### Exercise 2: Case Study 1 - Advanced DataFrame Indexing and Boolean Filtering
+
+**File**: `Week 6 Seminar/exercise_2_case_study_1_house_pricing.py` (309 lines)
+**Dataset**: House Prices (Ames, Iowa)
+
+This exercise focuses on advanced DataFrame operations including label-based indexing (`.loc[]`), position-based indexing (`.iloc[]`), and boolean masking for complex filtering operations.
+
+#### Exercise Questions:
+4. Find sale prices for houses with id 222 and 333
+5. Find the first 100 records in "df_location"
+6. Find all rows from df_house with OverallQual at least 8 and save as "df_great"
+7. (Optional) Find rows with OverallQual >= 8 AND SalePrice < 300,000 and save as "df_deal"
+
+#### Detailed Solutions:
+
+---
+
+#### Task 4: Find Sale Prices by ID
+```python
+# Method 1: Using .loc[] with list of IDs
+prices = df_house.loc[[222, 333], 'SalePrice']
+
+# Method 2: Individual access
+price_222 = df_house.loc[222, 'SalePrice']
+price_333 = df_house.loc[333, 'SalePrice']
+```
+
+**Concepts**:
+- `.loc[]` for label-based indexing
+- Selecting specific rows by index values
+- Single vs multiple row selection
+- Accessing specific columns with label indexing
+
+**Results**:
+- House Id 222: $100,000
+- House Id 333: $94,500
+- Mean: $97,250
+- Price difference: $5,500
+
+**Key Difference**: `.loc[]` uses index labels (Id column values), not positions
+
+---
+
+#### Task 5: Find First 100 Records
+```python
+# Method 1: Using .head() (most readable)
+df_location_first_100 = df_location.head(100)
+
+# Method 2: Using .iloc[] with slice
+df_location_first_100 = df_location.iloc[0:100]
+
+# Method 3: Direct slice notation
+df_location_first_100 = df_location[0:100]
+```
+
+**Concepts**:
+- `.head(n)` for retrieving first N rows
+- `.iloc[]` for position-based indexing
+- Slice notation with DataFrames
+- Index vs position distinction
+
+**Important Note**: With `.iloc[]`, the end position is EXCLUDED (Python standard)
+
+**Results**:
+- Shape: 100 rows × 2 columns
+- All three methods produce identical results
+- Most common neighborhood in first 100: NAmes (21 houses)
+- Dominant condition: Norm (87 houses)
+
+---
+
+#### Task 6: Filter High-Quality Houses
+```python
+# Create boolean mask
+mask_quality = df_house['OverallQual'] >= 8
+
+# Apply mask to filter DataFrame
+df_great = df_house.loc[mask_quality]
+
+# Alternative: Direct boolean indexing
+df_great = df_house[df_house['OverallQual'] >= 8]
+```
+
+**Concepts**:
+- Boolean masking for filtering
+- Creating condition masks
+- Applying masks with `.loc[]`
+- Direct boolean indexing syntax
+
+**Results**:
+- **229 houses** with OverallQual >= 8 (15.7% of dataset)
+- Quality distribution: 168 houses (quality=8), 43 (quality=9), 18 (quality=10)
+- Average price: $305,035.90
+- Price range: $122,000 - $755,000
+
+**Quality Premium**: High-quality houses cost **68.6% more** than average ($124,115 premium)
+
+---
+
+#### Task 7: Complex Boolean Filtering (Optional)
+```python
+# Combine multiple conditions with & (AND operator)
+mask_deal = (df_house['OverallQual'] >= 8) & (df_house['SalePrice'] < 300000)
+
+# Apply combined mask
+df_deal = df_house.loc[mask_deal]
+```
+
+**Concepts**:
+- Combining boolean conditions
+- `&` (AND), `|` (OR), `~` (NOT) operators
+- Parentheses for proper operator precedence
+- Multiple criteria filtering
+
+**Critical Note**: Use `&` for element-wise AND, not `and` (which is for boolean values only)
+
+**Results**:
+- **127 houses** meet both criteria (8.7% of total)
+- Represents **55.5%** of all high-quality houses
+- Average price: $243,303.09
+- Average savings: $61,732.81 (20.2% cheaper than all df_great)
+
+**Top Deal Neighborhoods**:
+1. **Somerst**: 25 houses
+2. **CollgCr**: 23 houses
+3. **NridgHt**: 17 houses
+
+**Year Built Range**: 1872-2009 (average: 1997)
+
+---
+
+#### Comparison Summary:
+
+| DataFrame | Rows | Avg Price | % of Total | Description |
+|-----------|------|-----------|------------|-------------|
+| df_house | 1,460 | $180,921 | 100% | Full dataset |
+| df_great | 229 | $305,036 | 15.7% | OverallQual >= 8 |
+| df_deal | 127 | $243,303 | 8.7% | High quality + affordable |
+
+**Key Insight**: Over half of high-quality houses are priced under $300k, offering significant value opportunities.
+
+---
+
+#### Concepts Demonstrated:
+- **Label-Based Indexing**: `.loc[]` with index labels
+- **Position-Based Indexing**: `.iloc[]` with integer positions
+- **Head/Tail Methods**: `.head()`, `.tail()` for quick data viewing
+- **Boolean Masking**: Creating and applying conditional filters
+- **Complex Filtering**: Combining multiple boolean conditions
+- **Logical Operators**: `&` (AND), `|` (OR), `~` (NOT)
+- **Data Subsetting**: Creating new DataFrames from filtered data
+- **Statistical Comparison**: Analyzing filtered vs full datasets
+
+#### Learning Outcomes:
+✅ Master `.loc[]` for label-based row/column selection  
+✅ Master `.iloc[]` for position-based indexing  
+✅ Create boolean masks from conditional expressions  
+✅ Combine multiple conditions with logical operators  
+✅ Filter DataFrames based on single and multiple criteria  
+✅ Compare statistics across different data subsets  
+✅ Identify data patterns and market insights  
+✅ Handle complex data filtering scenarios  
+
+#### Key Functions and Techniques:
+```python
+df.loc[row_labels, col_labels]   # Label-based indexing
+df.iloc[row_positions, col_pos]  # Position-based indexing
+df.head(n) / df.tail(n)          # First/last N rows
+df[condition]                     # Boolean indexing
+condition1 & condition2           # AND operator
+condition1 | condition2           # OR operator
+~condition                        # NOT operator
+mask.sum()                        # Count True values
+df.equals(other_df)               # Compare DataFrames
+series.value_counts()             # Frequency counts
+```
+
+#### Indexing Comparison:
+
+| Method | Type | Syntax | Use Case |
+|--------|------|--------|----------|
+| `.loc[]` | Label-based | `df.loc[222, 'SalePrice']` | Select by index/column names |
+| `.iloc[]` | Position-based | `df.iloc[0:100, 0:5]` | Select by row/column positions |
+| `.head()` | Convenience | `df.head(100)` | Quick view of first N rows |
+| Boolean | Conditional | `df[df['col'] > value]` | Filter by conditions |
+
+**Important Distinctions**:
+- `.loc[]` end is INCLUDED: `df.loc[222:333]` includes both 222 and 333
+- `.iloc[]` end is EXCLUDED: `df.iloc[0:100]` includes rows 0-99 (standard Python)
+
+#### Data Insights:
+- **Quality Distribution**: Only 15.7% of houses have OverallQual >= 8
+- **Price Premium**: High quality adds 68.6% to average price
+- **Value Opportunities**: 55.5% of high-quality homes are affordable (<$300k)
+- **Best Deal Areas**: Somerst, CollgCr, NridgHt neighborhoods
+- **Age Factor**: Deal houses average 1997 build year (relatively newer)
+
+#### Practical Applications:
+- Real estate filtering by multiple criteria
+- Market segmentation analysis
+- Investment opportunity identification
+- Price-to-quality ratio analysis
+- Neighborhood value assessment
+- Complex database queries in Pandas
+- Feature filtering for machine learning
+
+---
+
+### Exercise 3: Case Study 1 - Exploratory Data Analysis (EDA)
+
+**File**: `Week 6 Seminar/exercise_3_case_study_1_house_pricing.py` (593 lines)
+**Dataset**: House Prices (Ames, Iowa)
+
+This exercise demonstrates comprehensive exploratory data analysis techniques including missing value identification, distribution analysis, correlation studies, and categorical feature exploration.
+
+#### Task Overview:
+Create a DataFrame from selected columns and perform complete EDA:
+- **Numeric columns** (7): OverallQual, GrLivArea, TotRmsAbvGrd, YearBuilt, LotArea, LotFrontage, SalePrice
+- **Categorical columns** (3): MSZoning, Neighborhood, HouseStyle
+
+#### Analysis Steps:
+
+**1. Missing Value Analysis**
+```python
+# Identify and quantify missing data
+missing_counts = df_selected.isnull().sum()
+missing_percentages = (missing_counts / total_rows) * 100
+
+# Visualize missing data patterns
+plt.barh(missing_counts.sort_values())
+```
+
+**Key Findings**:
+- Only **LotFrontage** has missing values: 259 (17.74%)
+- All other features are complete
+- May require imputation strategy for LotFrontage
+
+---
+
+**2. Statistical Summary - Numeric Features**
+```python
+# Comprehensive statistics
+df_selected[numeric_cols].describe()
+
+# Additional metrics
+for col in numeric_cols:
+    print(f"Skewness: {df_selected[col].skew()}")
+    print(f"Kurtosis: {df_selected[col].kurtosis()}")
+```
+
+**Distribution Characteristics**:
+- **SalePrice**: Right-skewed (skewness=1.88), mean=$180,921, range=$34,900-$755,000
+- **OverallQual**: Slightly right-skewed (skewness=0.22), most houses rated 5-7
+- **GrLivArea**: Right-skewed (skewness=1.37), indicates larger homes are outliers
+- **LotArea**: Heavily right-skewed (skewness=12.21), extreme outliers present
+- **YearBuilt**: Left-skewed (skewness=-0.61), more recent constructions
+
+---
+
+**3. Distribution Visualization**
+```python
+# Histograms with frequency distributions
+df_selected[col].hist(bins=30, color='skyblue')
+
+# Box plots for outlier detection
+df_selected.boxplot(column=col, patch_artist=True)
+```
+
+**Outlier Detection**:
+- **LotArea**: Several extreme outliers (>100,000 sq ft)
+- **GrLivArea**: Few houses >4,000 sq ft
+- **SalePrice**: High-end luxury homes create right tail
+
+---
+
+**4. Categorical Feature Analysis**
+```python
+# Frequency distributions
+df_selected[col].value_counts()
+
+# Visualize category distributions
+value_counts.plot(kind='bar', color='teal')
+```
+
+**Category Insights**:
+- **MSZoning**: 5 types, dominated by RL (Residential Low Density, 1,151 houses)
+- **Neighborhood**: 25 neighborhoods, NAmes most common (225), Blueste rarest (2)
+- **HouseStyle**: 8 styles, 1Story most popular (726), 2.5Fin least common (8)
+
+---
+
+**5. Correlation Analysis - Numeric Features**
+```python
+# Compute correlation matrix
+correlation_matrix = df_selected[numeric_cols].corr()
+
+# Visualize with heatmap
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
+
+# Scatter plots with trend lines
+plt.scatter(df_selected[col], df_selected['SalePrice'])
+```
+
+**Correlation with SalePrice**:
+1. **OverallQual**: 0.791 (Strong positive) - Quality is top predictor
+2. **GrLivArea**: 0.709 (Strong positive) - Living area highly correlated
+3. **TotRmsAbvGrd**: 0.534 (Moderate positive) - Room count matters
+4. **YearBuilt**: 0.523 (Moderate positive) - Newer homes cost more
+5. **LotFrontage**: 0.352 (Weak positive) - Street footage less important
+6. **LotArea**: 0.264 (Weak positive) - Lot size has minimal impact
+
+**Interpretation**:
+- Quality and living space are strongest price drivers
+- Lot characteristics have surprisingly weak correlation
+- Linear relationships visible in scatter plots
+- Some non-linear patterns suggest feature engineering opportunities
+
+---
+
+**6. Categorical Impact on SalePrice**
+```python
+# Group by category and aggregate
+category_prices = df_selected.groupby(col)['SalePrice'].agg(['mean', 'median', 'count'])
+
+# Box plots by category
+df_selected.boxplot(column='SalePrice', by=col)
+
+# Average price comparison
+avg_prices.plot(kind='barh', color='darkgreen')
+```
+
+**Price Variation by Category**:
+
+**MSZoning** (Residential Type):
+- **Highest**: FV (Floating Village) - $214,014 avg
+- **Lowest**: C (all) (Commercial) - $74,528 avg
+- **Price Ratio**: 2.87x difference
+
+**Neighborhood** (Location):
+- **Highest**: NoRidge (North Ridge) - $335,295 avg
+- **Lowest**: MeadowV (Meadow Village) - $98,576 avg
+- **Price Ratio**: 3.40x difference (location matters most!)
+
+**HouseStyle** (Architecture):
+- **Highest**: 2.5Fin (2.5 story finished) - $220,000 avg
+- **Lowest**: 1.5Unf (1.5 story unfinished) - $110,150 avg
+- **Price Ratio**: 2.00x difference
+
+---
+
+#### Visualizations Created (8 files):
+1. **exercise_3_missing_values.png**: Bar chart of missing data counts
+2. **exercise_3_numeric_distributions.png**: Histograms for all 7 numeric features
+3. **exercise_3_numeric_boxplots.png**: Box plots showing outliers and quartiles
+4. **exercise_3_categorical_distributions.png**: Frequency bars for 3 categorical features
+5. **exercise_3_correlation_heatmap.png**: Color-coded correlation matrix
+6. **exercise_3_scatter_saleprice.png**: 6 scatter plots with trend lines
+7. **exercise_3_saleprice_by_categories.png**: Box plots of price by category
+8. **exercise_3_avg_price_by_categories.png**: Bar charts of average prices
+
+---
+
+#### Concepts Demonstrated:
+- **Missing Value Detection**: `.isnull()`, `.sum()`, percentage calculations
+- **Descriptive Statistics**: `.describe()`, `.mean()`, `.median()`, `.std()`
+- **Distribution Analysis**: Histograms, KDE, skewness, kurtosis
+- **Outlier Detection**: Box plots, IQR calculations
+- **Correlation Analysis**: `.corr()`, Pearson coefficients, heatmaps
+- **Categorical Aggregation**: `.groupby()`, `.agg()`, category-based statistics
+- **Data Visualization**: Matplotlib, Seaborn, multiple plot types
+- **Feature Relationships**: Scatter plots, trend lines, regression fitting
+
+#### Learning Outcomes:
+✅ Identify and quantify missing data in DataFrames  
+✅ Calculate comprehensive statistical summaries  
+✅ Analyze distribution shapes and detect outliers  
+✅ Compute and interpret correlation coefficients  
+✅ Visualize data using histograms, box plots, and heatmaps  
+✅ Analyze categorical feature impact on target variable  
+✅ Create professional EDA visualizations  
+✅ Extract actionable insights from exploratory analysis  
+✅ Prepare data quality assessment reports  
+✅ Identify feature engineering opportunities  
+
+#### Key Functions and Techniques:
+```python
+df.isnull().sum()                # Count missing values
+df.describe()                     # Statistical summary
+df[col].skew() / kurtosis()      # Distribution shape metrics
+df.hist() / df.boxplot()         # Distribution visualizations
+df.corr()                         # Correlation matrix
+sns.heatmap()                     # Correlation visualization
+df.groupby(col).agg()            # Categorical aggregation
+plt.scatter()                     # Relationship visualization
+np.polyfit() / np.poly1d()       # Trend line fitting
+df.select_dtypes()               # Filter columns by type
+```
+
+#### Key Insights from Analysis:
+
+**1. Data Quality**:
+- 17.74% missing in LotFrontage requires imputation
+- Other features have excellent completeness
+- No duplicate records detected
+
+**2. Price Distribution**:
+- Right-skewed: Mean ($180,921) > Median ($163,000)
+- Wide range: $34,900 to $755,000
+- Suggests log transformation may help for modeling
+
+**3. Strongest Predictors**:
+- **Quality (r=0.79)**: Overall quality rating is #1 predictor
+- **Size (r=0.71)**: Living area square footage is #2
+- **Combination**: Quality + Size explain majority of price variance
+
+**4. Location Premium**:
+- Neighborhood creates **3.4x price difference**
+- NoRidge, NridgHt, StoneBr are premium areas
+- MeadowV, IDOTRR, BrDale are budget areas
+
+**5. Outlier Patterns**:
+- Several mega-lots (LotArea >100k sq ft) skew distribution
+- A few luxury homes (>$600k) create price outliers
+- Some exceptionally large homes (>4k sq ft GrLivArea)
+
+**6. Feature Engineering Opportunities**:
+- Create quality-size interaction term
+- Bin neighborhoods into price tiers
+- Log-transform skewed features (SalePrice, LotArea, GrLivArea)
+- Impute LotFrontage using neighborhood median
+- Create age bins from YearBuilt
+
+#### Recommended Next Steps:
+1. **Handle Missing Data**: Impute LotFrontage using neighborhood-based strategy
+2. **Address Outliers**: Investigate and potentially remove extreme values
+3. **Transform Features**: Apply log transformation to right-skewed variables
+4. **Encode Categoricals**: One-hot encode or target encode categorical features
+5. **Feature Engineering**: Create interaction terms and polynomial features
+6. **Normalization**: Standardize numeric features for modeling
+7. **Train-Test Split**: Prepare data for machine learning pipeline
+
+#### Practical Applications:
+- Pre-modeling exploratory data analysis
+- Data quality assessment and reporting
+- Feature selection for machine learning
+- Business intelligence dashboards
+- Real estate market analysis
+- Academic research data profiling
+- Stakeholder presentation preparation
 
 ---
 
