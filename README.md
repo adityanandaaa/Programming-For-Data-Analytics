@@ -79,6 +79,16 @@ Programming_for_Data_Analytics/
 │       ├── house_price.csv
 │       ├── house_price.xlsx
 │       └── customer_churn.csv
+├── Week 7 Seminar/       # Week 7 seminar exercises
+│   ├── introduction_week_7.py  # Python recreation of Titanic lecture
+│   ├── case_study_1/     # Case Study 1: House Price Processing
+│   │   ├── exercise_1_case_study_1_titanic.py
+│   │   └── visualizations/
+│   ├── case_study_2/     # Case Study 2: Customer Churn Processing
+│   │   ├── exercise_1_case_study_2_customer_churn.py
+│   │   └── visualizations/
+│   ├── data source/      # Datasets for Week 7 (titanic_train.csv, customer_churn.csv)
+│   └── visualizations/   # Visualization outputs for Week 7
 ├── requirements.txt      # Project dependencies
 ├── main.py              # Main entry point
 └── README.md            # This file
@@ -1903,3 +1913,42 @@ Solution:
 ```
 
 ---
+
+## 📊 Week 7 Seminar
+
+The **Week 7 Seminar** folder continues data preparation and feature engineering using Titanic, house price, and customer churn datasets.
+
+### Introduction: Titanic Dataset
+
+**File**: `Week 7 Seminar/introduction_week_7.py`
+
+This script demonstrates:
+- Loading the Titanic dataset from CSV (with a fallback to Seaborn’s built-in dataset)
+- Basic dataset inspection and missing-value audit
+- A survival-by-class visualization saved to `Week 7 Seminar/visualizations/`
+
+### Case Study 1: House Price Processing
+
+**File**: `Week 7 Seminar/case_study_1/exercise_1_case_study_1_titanic.py`
+
+This exercise applies systematic cleaning and feature engineering:
+- Remove rows with >1 missing value
+- Drop columns with >33% missing values
+- Impute remaining missing values (median/mode)
+- Remove outliers in `SalePrice` using IQR
+- Apply log transformation to highly skewed numeric features
+- Create dummies for categorical variables (≤5 unique values)
+- Create YearBuilt period groups and encode as dummies
+
+### Case Study 2: Customer Churn Processing
+
+**File**: `Week 7 Seminar/case_study_2/exercise_1_case_study_2_customer_churn.py`
+
+This exercise builds on last week’s EDA findings:
+- Fix `TotalCharges` (empty strings → NaN → numeric)
+- Remove rows/columns with excessive missingness
+- Impute missing values
+- Remove outliers in `MonthlyCharges` and `TotalCharges`
+- Apply log transformation to skewed numeric columns
+- Create dummies for low-cardinality categorical variables
+
