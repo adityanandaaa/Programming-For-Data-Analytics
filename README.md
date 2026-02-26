@@ -87,6 +87,10 @@ Programming_for_Data_Analytics/
 │   ├── case_study_2/     # Case Study 2: Customer Churn Processing
 │   │   ├── exercise_1_case_study_2_customer_churn.py
 │   │   └── visualizations/
+│   ├── case_study_3/     # Case Study 3: Titanic Dataset Processing
+│   │   ├── exercise_1_case_study_3_titanic.py
+│   │   ├── exercise_2_case_study_3_titanic.py
+│   │   └── visualizations/
 │   ├── data source/      # Datasets for Week 7 (titanic_train.csv, customer_churn.csv)
 │   └── visualizations/   # Visualization outputs for Week 7
 ├── requirements.txt      # Project dependencies
@@ -1951,4 +1955,26 @@ This exercise builds on last week’s EDA findings:
 - Remove outliers in `MonthlyCharges` and `TotalCharges`
 - Apply log transformation to skewed numeric columns
 - Create dummies for low-cardinality categorical variables
+
+### Case Study 3: Titanic Dataset Processing
+
+**File**: `Week 7 Seminar/case_study_3/exercise_1_case_study_3_titanic.py`
+
+This exercise implements a robust processing pipeline for the passenger survival dataset:
+- Remove rows with >1 missing value
+- Drop columns with >33% missingness (e.g., `Cabin`)
+- Impute missing values for `Age` (median) and `Embarked` (mode)
+- Remove outliers in `Fare` using the IQR method
+- Apply log transformation (`np.log1p`) to skewed features like `SibSp`, `Parch`, and `Fare`
+- Create dummy variables for `Sex` and `Embarked`
+- Feature engineering: Group `Age` into periods (Child, Adult, Senior) and encode as dummies
+
+**File**: `Week 7 Seminar/case_study_3/exercise_2_case_study_3_titanic.py`
+
+This exercise demonstrates the power of Regular Expressions for data extraction:
+- Use RegEx pattern `r'^([^,]+),\s*([^.]+)\.\s*(.*)$'` to split the `Name` column
+- Extract three distinct components: `Surname`, `Title`, and `FirstName`
+- Analyze social status by grouping titles (Mr, Mrs, Miss, Master, and Rare)
+- Calculate and visualize survival rates by title group, revealing higher survivability for female titles and young masters
+
 
