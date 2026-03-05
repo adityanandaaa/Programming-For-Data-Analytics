@@ -1977,4 +1977,42 @@ This exercise demonstrates the power of Regular Expressions for data extraction:
 - Analyze social status by grouping titles (Mr, Mrs, Miss, Master, and Rare)
 - Calculate and visualize survival rates by title group, revealing higher survivability for female titles and young masters
 
+---
+
+## 📊 Week 8 Seminar
+
+The **Week 8 Seminar** focuses on professional machine learning workflows using **Scikit-Learn**, transitioning from manual data cleaning to automated pipelines and supervised learning models.
+
+### Introduction: Machine Learning with Scikit-Learn
+
+**File**: `Week 8 Seminar/introduction_week_8.py`
+
+This script provides a comprehensive walkthrough of the Scikit-Learn ecosystem, divided into two main parts:
+
+#### Part 1: Automated Data Processing
+- **Advanced Imputation**: Demonstrates three strategies to handle missing data:
+    - `SimpleImputer`: Baseline mean/median imputation.
+    - `IterativeImputer`: Multivariate approach that models each feature as a function of others.
+    - `KNNImputer`: Uses nearest neighbors to estimate missing values.
+- **Feature Scaling**: Implements `StandardScaler` (Z-score normalization) and `MinMaxScaler` (0-1 range) to ensure features contribute equally to models.
+- **Categorical Encoding**: Usage of `OrdinalEncoder` for ranked data and `OneHotEncoder` for nominal data.
+- **Dimensionality Reduction**:
+    - `VarianceThreshold`: Automatically removes features with zero or low variance.
+    - `PCA` (Principal Component Analysis): Extracts the most significant "components" that explain the majority of data variance.
+
+#### Part 2: Supervised Learning (Decision Trees)
+- **Model Workflow**: Implements the standard 5-step ML pipeline:
+    1. **Train-Test Split**: Using `train_test_split` to create a 70/30 data split.
+    2. **Instantiation**: Creating a `DecisionTreeClassifier`.
+    3. **Fitting**: Training the model on features (`X`) and target labels (`y`).
+    4. **Prediction**: Testing the model on unseen data.
+    5. **Evaluation**: Calculating **Accuracy (95.56% on Iris)** and generating detailed classification reports.
+- **Visualization**: Exports a graphical representation of the trained decision tree as `decision_tree.png` and `decision_tree.svg`.
+
+**Key Learnings**:
+- Understanding the difference between fit, transform, and fit_transform.
+- Managing experimental features like `IterativeImputer`.
+- Interpreting accuracy, precision, recall, and f1-score.
+- Visualizing how a model makes decisions through hierarchical splitting.
+
 
