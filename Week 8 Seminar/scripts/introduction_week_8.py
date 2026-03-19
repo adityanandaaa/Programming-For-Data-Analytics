@@ -36,7 +36,7 @@ print("=" * 80)
 try:
     # Use absolute path or construct path relative to the script location
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    data_path = os.path.join(script_dir, 'titanic_train.csv')
+    data_path = os.path.join(script_dir, '..', 'data', 'titanic_train.csv')
     df_titan = pd.read_csv(data_path, index_col=0)
 except FileNotFoundError:
     print(f"Warning: {data_path} not found. Please ensure it's in the working directory.")
@@ -97,10 +97,18 @@ if df_titan is not None:
     print(f"Max of scaled Age: {df_titan_numeric['Age_MM'].max():.6f}")
     
     # ========== SECTION 3: ENCODING ==========
+    # Machine Learning models (like Decision Trees or Linear Regression) are mathematical engines
+    # that cannot process text strings directly. We must convert categorical data (text) into 
+    # numbers while maintaining the logical structure of the information.
     print("\n" + "-" * 80)
     print("SECTION 3: ENCODING CATEGORICAL VARIABLES")
     print("-" * 80)
     
+    # --- Ordinal Encoding ---
+    # WHY: Use this when the text data has a natural "rank" or "order" (e.g., Cold < Warm < Hot).
+    # It assigns 0, 1, 2... to the strings. 
+    # NOTE: Applying this to 'Sex' (Male/Female) is simple but can mislead some models into 
+    # thinking one gender is mathematically "greater" than the other.
     print("\n### Ordinal Encoding ###")
     df_titan_encode = df_titan.select_dtypes(include=[np.number]).copy()
     sex_ordinal = df_titan[['Sex']].copy()
@@ -110,6 +118,11 @@ if df_titan is not None:
     print("Ordinal encoding applied to Sex column.")
     print(f"Mapping: {dict(zip(enc_ordinal.categories_[0], range(len(enc_ordinal.categories_[0]))))}")
     
+    # --- One-Hot Encoding ---
+    # WHY: Use this for nominal data that has NO natural order (like 'Sex' or 'Embarked' port).
+    # It creates new binary (0 or 1) columns for every category.
+    # BENEFIT: It avoids the "mathematical ranking" problem of Ordinal Encoding.
+    # DRAWBACK: It increases the number of columns (the "Curse of Dimensionality").
     print("\n### One-Hot Encoding ###")
     enc_onehot = OneHotEncoder(sparse_output=False)
     sex_onehot = enc_onehot.fit_transform(df_titan[['Sex']])
@@ -118,10 +131,17 @@ if df_titan is not None:
     print(f"Created columns: {list(df_sex.columns)}")
     
     # ========== SECTION 4: DIMENSIONALITY REDUCTION ==========
+    # Dimensionality reduction helps simplify the dataset by removing features that 
+    # provide little to no information, or by compressing many features into a 
+    # few "super-features" (Principal Components).
     print("\n" + "-" * 80)
     print("SECTION 4: DIMENSIONALITY REDUCTION")
     print("-" * 80)
     
+    # --- Variance Threshold ---
+    # WHY: A feature with zero variance (all values are the same) provides zero info 
+    # because it doesn't help distinguish between samples. 
+    # Example: If every passenger was in 'Pclass 3', that column is useless for prediction.
     print("\n### Variance Threshold ###")
     df_titan_clean = df_titan_numeric.dropna()
     vt = VarianceThreshold(threshold=0)
@@ -129,18 +149,29 @@ if df_titan is not None:
     df_variance_filtered = vt.fit_transform(df_titan_clean)
     print(f"Shape after variance filtering: {df_variance_filtered.shape}")
     
+    # --- PCA (Principal Component Analysis) ---
+    # WHY: Real-world data often has redundant features (e.g., 'Age' and 'BirthYear'). 
+    # PCA projects the data into a new coordinate system where the first few 
+    # "Principal Components" capture the maximum possible spread (variance) of the data.
+    # BENEFIT: Reduces 100 columns down to 5-10 with minimal loss of information.
     print("\n### Principal Component Analysis (PCA) ###")
     pca_full = PCA()
     pca_full.fit(df_titan_clean)
     print(f"Total variance explained by all components: {pca_full.explained_variance_ratio_.sum():.6f}")
     print(f"Explained variance ratio per component:\n{pca_full.explained_variance_ratio_}")
     
+    # --- PCA with Specified Components ---
+    # WHY: Often we want to target a specific number of features (like 3) for 3D visualization 
+    # or to meet specific speed requirements for a model.
     print("\n### PCA with 3 Components ###")
     pca_3 = PCA(n_components=3)
     pca_3_data = pca_3.fit_transform(df_titan_clean)
     print(f"Variance explained by 3 components: {pca_3.explained_variance_ratio_.sum():.6f}")
     print(f"Explained variance ratio: {pca_3.explained_variance_ratio_}")
     
+    # --- PCA with MLE (Maximum Likelihood Estimation) ---
+    # WHY: Instead of guessing how many components to keep, 'mle' uses a statistical 
+    # method to automatically determine the "optimal" number of features to represent the data.
     print("\n### PCA with MLE Component Selection ###")
     pca_mle = PCA(n_components='mle')
     pca_mle_data = pca_mle.fit_transform(df_titan_clean)
@@ -231,8 +262,9 @@ plot_tree(clf, feature_names=feature_cols, class_names=list(iris.species.unique(
 
 # Save the tree visualization
 output_dir = os.path.dirname(os.path.abspath(__file__))
-svg_path = os.path.join(output_dir, 'decision_tree.svg')
-png_path = os.path.join(output_dir, 'decision_tree.png')
+viz_dir = os.path.join(output_dir, '..', 'visualizations')
+svg_path = os.path.join(viz_dir, 'decision_tree.svg')
+png_path = os.path.join(viz_dir, 'decision_tree.png')
 
 plt.savefig(svg_path, format='svg', bbox_inches='tight', dpi=300)
 plt.savefig(png_path, format='png', bbox_inches='tight', dpi=300)
